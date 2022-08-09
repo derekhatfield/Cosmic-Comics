@@ -22,9 +22,14 @@ public class CollectionController {
         return collectionDao.getCollectionByCollectionId(id);
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.POST)
-    public Collection createCollection(@RequestBody Collection newCollection, @PathVariable int userId){
+    @RequestMapping(path = "/users/{userId}", method = RequestMethod.POST)
+    public Collection createCollectionByUserId(@RequestBody Collection newCollection, @PathVariable int userId){
         return collectionDao.createNewCollection(newCollection, userId);
+    }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public void deleteCollectionByCollectionId(@PathVariable int id) {
+        collectionDao.deleteCollectionByCollectionId(id);
     }
 
 }
