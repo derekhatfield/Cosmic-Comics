@@ -3,6 +3,7 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS comics;
 DROP TABLE IF EXISTS collections;
+DROP TABLE IF EXISTS comics_collections;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -14,8 +15,8 @@ CREATE TABLE users (
 
 CREATE TABLE comics (
    comic_id SERIAL,
-   comic_author varchar(50) NOT NULL,
-   comic_issue INT,
+   comic_author varchar(100) NOT NULL,
+   comic_issue INT NOT NULL,
    comic_title varchar(200) NOT NULL,
    comic_series varchar(200) NOT NULL,
    comic_publisher varchar(50) NOT NULL,
@@ -24,24 +25,18 @@ CREATE TABLE comics (
 
 CREATE TABLE collections (
     collection_id SERIAL,
-    user_id INT,
+    user_id INT NOT NULL,
     collection_name varchar(50) NOT NULL,
     visibility varchar(50) NOT NULL,
     CONSTRAINT PK_collections PRIMARY KEY (collection_id),
-
-    CONSTRAINT FK_collections FOREIGN KEY (user_id) REFERENCES users (user_id)
-
-
+    CONSTRAINT FK_collections_users FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
-CREATE TABLE comic_collections (
+CREATE TABLE comics_collections (
    comic_id INT,
    collection_id INT,
-
-   CONSTRAINT FK_comic FOREIGN KEY (comic_id) REFERENCES comics (comic_id),
-   CONSTRAINT FK_comic_collections FOREIGN KEY (collection_id) REFERENCES collections (collection_id)
-
+   CONSTRAINT FK_comics_collections_comics FOREIGN KEY (comic_id) REFERENCES comics (comic_id),
+   CONSTRAINT FK_comics_collections_collections FOREIGN KEY (collection_id) REFERENCES collections (collection_id)
 );
-
 
 COMMIT TRANSACTION;

@@ -13,9 +13,9 @@ INSERT INTO comics (comic_author,comic_issue,comic_title,comic_series,comic_publ
 INSERT INTO comics (comic_author,comic_issue,comic_title,comic_series,comic_publisher) VALUES ('testAuthor4',1,'testTitle4','testSeries4','testPublisher4');
 INSERT INTO comics (comic_author,comic_issue,comic_title,comic_series,comic_publisher) VALUES ('testAuthor5',4,'testTitle5','testSeries5','testPublisher5');
 
-INSERT INTO comic_collections (comic_id, collection_id) VALUES (1,1);
-INSERT INTO comic_collections (comic_id, collection_id) VALUES (1,2);
-INSERT INTO comic_collections (comic_id, collection_id) VALUES (2,3);
-INSERT INTO comic_collections (comic_id, collection_id) VALUES (4,3);
+INSERT INTO comics_collections (comic_id, collection_id) VALUES (1,1);
+INSERT INTO comics_collections (comic_id, collection_id) VALUES (1,2);
+INSERT INTO comics_collections (comic_id, collection_id) VALUES (2,3);
+INSERT INTO comics_collections (comic_id, collection_id) VALUES (4,3);
 
 COMMIT TRANSACTION;
