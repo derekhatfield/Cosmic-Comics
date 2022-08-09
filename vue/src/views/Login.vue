@@ -1,5 +1,6 @@
 <template>
   <div id="login" class="text-center">
+    <banner></banner>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -32,6 +33,7 @@
         required
       />
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <!-- <router-link :to="{ path: '/' }">Home :| </router-link> -->
       <button type="submit">Sign in</button>
     </form>
   </div>
@@ -39,10 +41,14 @@
 
 <script>
 import authService from "../services/AuthService";
+// import banner from "../components/Banner.vue";
 
 export default {
   name: "login",
-  components: {},
+  components: {
+    // banner
+  },
+
   data() {
     return {
       user: {
@@ -74,3 +80,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+div {
+  background-color: blanchedalmond;
+}
+
+</style>
