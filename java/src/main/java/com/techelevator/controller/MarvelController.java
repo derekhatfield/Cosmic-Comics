@@ -1,29 +1,21 @@
 package com.techelevator.controller;
 
-import com.techelevator.model.Comic;
-import com.techelevator.model.MarvelComic;
-import com.techelevator.service.MarvelComicService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-import java.util.List;
-
 @RestController
 @CrossOrigin
-@RequestMapping("/comicstest")
 public class MarvelController {
 
-    @Autowired
-    private MarvelComicService marvelComicService;
+    private static final String MARVEL_API_BASE_URL = "https://gateway.marvel.com/v1/public/";
+    private static final String MARVEL_API_PUBLIC_KEY = "248644f449ac62c68a60d0ecd4fa7dba";
+    private static final String MARVEL_API_PRIVATE_KEY = "6a0961a46925e2b1524460f0e74c8a24add73d67";
+    private static final String MARVEL_API_TS = "1";
+    private static final String MARVEL_API_HASH = "c10e02667791a567160a2739bc6849a1";
 
-    @GetMapping
-    public MarvelComic[] getAllComics() {
-        return marvelComicService.findAllComics();
-    }
+    /* The pattern for making Marvel API calls is base url + comics/characters/etc + ts + public key + hash */
+
+    private RestTemplate restTemplate = new RestTemplate();
 
 }
