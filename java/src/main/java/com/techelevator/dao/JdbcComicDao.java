@@ -23,7 +23,7 @@ public class JdbcComicDao implements ComicDao {
         if (results.next()) {
             comic = mapRowToComic(results);
         }
-        return comic;
+        return comic; 
     }
 
     @Override
