@@ -5,15 +5,13 @@ public class Collection {
     private int collectionId;
     private int userId;
     private String name;
-    private String visibility;
 
     public Collection() { }
 
-    public Collection(int collectionId, int userId, String name, String visibility) {
+    public Collection(int collectionId, int userId, String name) {
         this.collectionId = collectionId;
         this.userId = userId;
         this.name = name;
-        this.visibility = visibility;
     }
 
     public int getCollectionId() {
@@ -38,13 +36,5 @@ public class Collection {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getVisibility() {
-        return visibility;
-    }
-
-    public void setVisibility(String visibility) {
-        this.visibility = visibility;
     }
 }

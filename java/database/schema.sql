@@ -17,9 +17,9 @@ CREATE TABLE comics (
    comic_id SERIAL,
    comic_author varchar(100) NOT NULL,
    comic_issue INT NOT NULL,
-   comic_title varchar(200) NOT NULL,
-   comic_series varchar(200) NOT NULL,
-   comic_publisher varchar(50) NOT NULL,
+   comic_title varchar(100) NOT NULL,
+   comic_series varchar(100) NOT NULL,
+   comic_thumbnail_url varchar(100) NOT NULL,
    CONSTRAINT PK_comics PRIMARY KEY (comic_id)
 );
 
@@ -27,7 +27,6 @@ CREATE TABLE collections (
     collection_id SERIAL,
     user_id INT NOT NULL,
     collection_name varchar(50) NOT NULL,
-    visibility varchar(50) NOT NULL,
     CONSTRAINT PK_collections PRIMARY KEY (collection_id),
     CONSTRAINT FK_collections_users FOREIGN KEY (user_id) REFERENCES users (user_id)
 );

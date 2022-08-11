@@ -6,4 +6,8 @@ public interface ComicDao {
 
     Comic getComicByComicId(int comicId);
 
+    Comic addComicByComicId(Comic comicToAdd, int comidId);
+
+    void removeComicByComicId(int comicId);
+
 }

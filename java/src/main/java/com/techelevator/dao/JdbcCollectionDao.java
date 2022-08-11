@@ -41,9 +41,9 @@ public class JdbcCollectionDao implements CollectionDao {
 
     @Override
     public Collection createNewCollection(Collection collectionToCreate, int userId) {
-        String sql = "INSERT INTO collections (user_id, collection_name, visibility) " +
+        String sql = "INSERT INTO collections (user_id, collection_name) " +
                 "VALUES (?, ?, ?) RETURNING collection_id;";
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, collectionToCreate.getUserId(), collectionToCreate.getName(), collectionToCreate.getVisibility());
+        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, collectionToCreate.getUserId(), collectionToCreate.getName());
 
         return getCollectionByCollectionId(newId);
     }
@@ -61,7 +61,6 @@ public class JdbcCollectionDao implements CollectionDao {
         collection.setCollectionId(rowSet.getInt("collection_id"));
         collection.setUserId(rowSet.getInt("user_id"));
         collection.setName(rowSet.getString("collection_name"));
-        collection.setVisibility(rowSet.getString("visibility"));
         return collection;
     }
 }
