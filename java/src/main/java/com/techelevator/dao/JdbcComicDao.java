@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Collection;
 import com.techelevator.model.Comic;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -23,7 +22,7 @@ public class JdbcComicDao implements ComicDao {
         if (results.next()) {
             comic = mapRowToComic(results);
         }
-        return comic; 
+        return comic;
     }
 
     @Override
