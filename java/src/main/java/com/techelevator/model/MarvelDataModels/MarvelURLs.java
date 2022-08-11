@@ -1,0 +1,20 @@
+package com.techelevator.model.MarvelDataModels;
+
+public class MarvelURLs {
+
+    private String url;
+
+    public MarvelURLs() { }
+
+    public MarvelURLs(String url) {
+        this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+}

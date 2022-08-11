@@ -1,5 +1,6 @@
 <template>
   <div id="register" class="text-center">
+     <navigation-bar/>
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -42,9 +43,13 @@
 
 <script>
 import authService from '../services/AuthService';
+import NavigationBar from '@/components/NavigationBar';
 
 export default {
   name: 'register',
+  components: {
+    NavigationBar
+  },
   data() {
     return {
       user: {

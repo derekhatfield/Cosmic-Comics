@@ -1,18 +1,19 @@
 <template>
   <div id="login" class="text-center">
+    <navigation-bar/>
     <banner></banner>
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
+      <h1 class="sign-in">Please Sign In</h1>
+      <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
+        Invalid username and password!
+      </div>
       <div
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
+      >
+        Thank you for registering, please sign in.
+      </div>
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -41,12 +42,12 @@
 
 <script>
 import authService from "../services/AuthService";
-// import banner from "../components/Banner.vue";
+import NavigationBar from '@/components/NavigationBar';
 
 export default {
   name: "login",
   components: {
-    // banner
+    NavigationBar
   },
 
   data() {
@@ -83,7 +84,18 @@ export default {
 
 <style scoped>
 div {
-  background-color: blanchedalmond;
+  background-color: transparent;
 }
 
+.sign-in {
+  font-family:  "Raleway";
+  letter-spacing: 3px;
+  color: white;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
 </style>
