@@ -1,0 +1,87 @@
+<template>
+  <div class="navigation-container">
+      <div class="nav-box">Collections</div>
+      <div class="nav-box">Add a Comic</div>
+      <div class="nav-box">Create a Collection</div>
+      <div class="nav-box">
+        <img
+          src="@/assets/Search Tool.png"
+          alt="Search Tool"
+          class="Search Tool Image"
+          height="50px"
+          width="50px"
+        />
+      </div>
+  </div>
+</template>
+
+<script>
+
+export default {
+    name: "navigation-bar",
+}
+</script>
+
+<style>
+.navigation-container {
+  background-image: none;
+  background-color: transparent;
+  flex-direction: row;
+  display: flex;
+  align-self: center;
+  justify-content: space-around;
+  vertical-align: middle;
+  height: auto; /* Change this when we properly have everything fit on the page */
+  padding: 2px;
+  margin: 0% 0% 0% 0%;
+}
+
+.nav-box {
+  border: 5px solid #5ecade;
+  border-style: inset;
+  background-image: none;
+  background-color: navy;
+  color: #3db656;
+  text-align:center;
+  font-family: "Contrail One", "Franklin Gothic Medium Extended", "sans-serif";
+  letter-spacing: 1px;
+  word-spacing: 0;
+  font-weight: bold;
+  font-size: 160%;
+  border-radius: 10px;
+  padding: 1.5% 1% 1.5% 1%;
+  line-height: 15px;
+  width: fit-content;
+  block-size: fit-content;
+  }
+
+.nav-box:nth-child(3) {
+  border: 5px solid #5ecade;
+  border-style: inset;
+  background-image: none;
+  background-color: navy;
+  color: #3db656;
+  letter-spacing: 1px;
+  word-spacing: 0;
+  font-size: 160%;
+  border-radius: 10px;
+  width: 22%;
+  height: 20px;
+}
+
+.nav-box:nth-child(4) {
+  background-image: none;
+  border: transparent;
+  background-color: transparent;
+  border-radius: 10px;
+  width: auto;
+  height: auto;
+  margin-bottom: 0px;
+
+}
+
+img {
+  width: 75px;
+  height: 75px;
+}
+</style>
