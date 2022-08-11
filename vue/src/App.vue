@@ -39,6 +39,12 @@
 
 <style>
 
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 p {
   display:inline-block; 
   vertical-align:middle;
@@ -47,6 +53,9 @@ p {
 }
 #app {
   background-image: url("assets/CC Wallpaper.png");
+  background-attachment: scroll;
+  background-size: cover;
+  
 }
 
 #nav {
@@ -67,7 +76,7 @@ p {
   background-color: navy;
   border-radius: 10px;
   margin: 10px;
-  padding: 1.5% 1% 1.5% 1%;
+  padding: 2%;
   text-align: center;
   color: #5ecade;
   font-family: "Contrail One", "Raleway", "Franklin Gothic Medium Extended";
@@ -78,6 +87,7 @@ p {
   justify-content: center;
   width: fit-content;
   block-size: fit-content;
+  display: inline-block;
 }
 .header-box:nth-child(1) {
   margin-right: auto;

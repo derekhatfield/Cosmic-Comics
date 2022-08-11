@@ -5,7 +5,9 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-
+import Collections from '../views/Collections.vue'
+import AddAComic from '../views/AddAComic.vue'
+import CreateACollection from '../views/CreateACollection.vue'
 Vue.use(Router)
 
 /**
@@ -49,6 +51,33 @@ const router = new Router({
       path: "/register",
       name: "register",
       component: Register,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
+    {
+      path: "/Collections",
+      name: "Collections",
+      component: Collections,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
+    {
+      path: "/AddAComic",
+      name: "AddAComic",
+      component: AddAComic,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
+    {
+      path: "/CreateACollection",
+      name: "CreateACollection",
+      component: CreateACollection,
       meta: {
         requiresAuth: false
       }

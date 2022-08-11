@@ -1,25 +1,42 @@
 <template>
   <div class="navigation-container">
-      <div class="nav-box">Collections</div>
-      <div class="nav-box">Add a Comic</div>
-      <div class="nav-box">Create a Collection</div>
-      <div class="nav-box">
+    <div class="nav-box">
+      <router-link v-bind:to="{ name: 'Collections' }" tag="p"
+        >Collections</router-link
+      >
+    </div>
+    <div class="nav-box">
+      <router-link v-bind:to="{ name: 'AddAComic' }" tag="p"
+        >Add a Comic</router-link
+      >
+    </div>
+    <div class="nav-box">
+      <router-link v-bind:to="{ name: 'CreateACollection' }" tag="p">Create A Collection</router-link>
+
+
+
+
+    </div>
+    <div class="nav-box">
+      <button type="button">
         <img
           src="@/assets/Search Tool.png"
           alt="Search Tool"
           class="Search Tool Image"
           height="50px"
           width="50px"
+          onclick="Search();"
         />
-      </div>
+      </button>
+    </div>
   </div>
 </template>
 
-<script>
 
+<script>
 export default {
-    name: "navigation-bar",
-}
+  name: "navigation-bar",
+};
 </script>
 
 <style>
@@ -29,20 +46,20 @@ export default {
   flex-direction: row;
   display: flex;
   align-self: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   vertical-align: middle;
   height: auto; /* Change this when we properly have everything fit on the page */
   padding: 2px;
   margin: 0% 0% 0% 0%;
 }
 
-.nav-box {
+button {
   border: 5px solid #5ecade;
   border-style: inset;
   background-image: none;
   background-color: navy;
   color: #3db656;
-  text-align:center;
+  text-align: center;
   font-family: "Contrail One", "Franklin Gothic Medium Extended", "sans-serif";
   letter-spacing: 1px;
   word-spacing: 0;
@@ -53,7 +70,35 @@ export default {
   line-height: 15px;
   width: fit-content;
   block-size: fit-content;
-  }
+}
+
+
+button {
+  background-image: none;
+  background-color: transparent;
+  border: transparent;
+  width: fit-content;
+  
+}
+
+.nav-box {
+  border: 5px solid #5ecade;
+  border-style: inset;
+  background-image: none;
+  background-color: navy;
+  color: #3db656;
+  text-align: center;
+  font-family: "Contrail One", "Franklin Gothic Medium Extended", "sans-serif";
+  letter-spacing: 1px;
+  word-spacing: 0;
+  font-weight: bold;
+  font-size: 160%;
+  border-radius: 10px;
+  padding: 1.5% 1% 1.5% 1%;
+  line-height: 15px;
+  width: fit-content;
+  block-size: fit-content;
+}
 
 .nav-box:nth-child(3) {
   border: 5px solid #5ecade;
@@ -77,11 +122,13 @@ export default {
   width: auto;
   height: auto;
   margin-bottom: 0px;
-
+  padding-top: 6px;
 }
 
 img {
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
 }
+
+
 </style>
