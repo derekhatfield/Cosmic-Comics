@@ -19,7 +19,7 @@ CREATE TABLE comics (
    comic_issue INT NOT NULL,
    comic_title varchar(100) NOT NULL,
    comic_series varchar(100) NOT NULL,
-   comic_thumbnail_url varchar(100) NOT NULL,
+   comic_thumbnail_url varchar(100),
    CONSTRAINT PK_comics PRIMARY KEY (comic_id)
 );
 
