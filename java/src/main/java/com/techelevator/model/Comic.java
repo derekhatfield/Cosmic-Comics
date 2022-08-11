@@ -7,17 +7,15 @@ public class Comic {
     private int comicIssue;
     private String comicTitle;
     private String comicSeries;
-    private String comicPublisher;
 
     public Comic() { }
 
-    public Comic(int comicId, String comicAuthor, int comicIssue, String comicTitle, String comicSeries, String comicPublisher) {
+    public Comic(int comicId, String comicAuthor, int comicIssue, String comicTitle, String comicSeries) {
         this.comicId = comicId;
         this.comicAuthor = comicAuthor;
         this.comicIssue = comicIssue;
         this.comicTitle = comicTitle;
         this.comicSeries = comicSeries;
-        this.comicPublisher = comicPublisher;
     }
 
     public int getComicId() {
@@ -58,13 +56,5 @@ public class Comic {
 
     public void setComicSeries(String comicSeries) {
         this.comicSeries = comicSeries;
-    }
-
-    public String getComicPublisher() {
-        return comicPublisher;
-    }
-
-    public void setComicPublisher(String comicPublisher) {
-        this.comicPublisher = comicPublisher;
     }
 }
