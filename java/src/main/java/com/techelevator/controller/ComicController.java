@@ -6,7 +6,7 @@ import com.techelevator.model.Comic;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("http://localhost:8080/")
 @RequestMapping("/comics")
 public class ComicController {
 

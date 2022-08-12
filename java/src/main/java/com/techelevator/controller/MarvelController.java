@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("http://localhost:8080/")
 public class MarvelController {
 
     private static final String MARVEL_API_BASE_URL = "https://gateway.marvel.com/v1/public/";
