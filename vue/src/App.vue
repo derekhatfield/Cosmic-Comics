@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <!-- <div class="cursor">
+      <link
+      href="http://www.rw-designer.com/cursor-set/superheroes-marvel"/>
+    </div> -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Bangers"
@@ -13,13 +17,17 @@
       href="https://fonts.googleapis.com/css?family=Raleway"
     />
     <div id="nav">
+        <router-link v-bind:to="{ name: 'home' }"
+          ><img class="logo" src="@/assets/Cosmic Comics.png"
+        /></router-link>
       <div class="header-box">
         <router-link v-bind:to="{ name: 'home' }" tag="p">Home</router-link>
       </div>
       <router-link
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
-        >Logout</router-link>
+        >Logout</router-link
+      >
       <div class="header-box">
         <router-link v-bind:to="{ name: 'login' }" tag="p">Login</router-link>
       </div>
@@ -39,6 +47,11 @@
 
 <style>
 
+/* .cursor {
+  width: 200px;
+  height: 200px;
+  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=118271), auto;
+} */
 
 * {
   margin: 0;
@@ -46,16 +59,15 @@
 }
 
 p {
-  display:inline-block; 
-  vertical-align:middle;
-  margin: 0 0 0 0; 
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0 0;
   width: auto;
 }
 #app {
   background-image: url("assets/CC Wallpaper.png");
   background-attachment: scroll;
   background-size: cover;
-  
 }
 
 #nav {
@@ -70,7 +82,7 @@ p {
 }
 
 .header-box {
-  border: 3px solid #D890FF;
+  border: 3px solid #d890ff;
   border-style: inset;
   background-image: none;
   background-color: navy;
@@ -84,13 +96,13 @@ p {
   word-spacing: 1px;
   font-weight: bold;
   font-size: 150%;
-  justify-content: center;
+  justify-content: right;
   width: fit-content;
   block-size: fit-content;
   display: inline-block;
 }
-.header-box:nth-child(1) {
-  margin-right: auto;
+.header-box:nth-child(2) {
+  margin-left: auto;
 }
 
 footer {
@@ -104,5 +116,10 @@ footer {
   margin-right: auto;
   margin-left: auto;
   background-image: none;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
 }
 </style>

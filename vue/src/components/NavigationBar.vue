@@ -1,13 +1,13 @@
 <template>
   <div class="navigation-container">
     <div class="nav-box">
-      <router-link v-bind:to="{ name: 'Collections' }" tag="p"
-        >Collections</router-link
+      <router-link v-bind:to="{ name: 'Comics' }" tag="p"
+        >Comics</router-link
       >
     </div>
     <div class="nav-box">
-      <router-link v-bind:to="{ name: 'AddAComic' }" tag="p"
-        >Add a Comic</router-link
+      <router-link v-bind:to="{ name: 'Collections' }" tag="p"
+        >Collections</router-link
       >
     </div>
     <div class="nav-box">
@@ -46,11 +46,9 @@ export default {
   flex-direction: row;
   display: flex;
   align-self: center;
-  justify-content: space-evenly;
+  justify-content: center;
   vertical-align: middle;
   height: auto; /* Change this when we properly have everything fit on the page */
-  padding: 2px;
-  margin: 0% 0% 0% 0%;
 }
 
 button {
@@ -98,6 +96,7 @@ button {
   line-height: 15px;
   width: fit-content;
   block-size: fit-content;
+  margin: 0% 1% 0% 1%;
 }
 
 .nav-box:nth-child(3) {
