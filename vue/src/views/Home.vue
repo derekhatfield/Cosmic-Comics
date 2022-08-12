@@ -65,7 +65,7 @@ body {
   background-color: transparent;
   width: auto;
   height: auto;
-  margin: 10px 10px 10px;
+  margin:  10px 10px;
 }
 
 .main-display {
@@ -77,7 +77,7 @@ body {
 
   text-align: center;
   
-  font-family:'Franklin Gothic Medium Extended', 'Arial Narrow', Arial, sans-serif;
+  font-family:"Contrail One", "Raleway", "Franklin Gothic Medium Extended";
   font-weight:bold;
   font-size: 175%;
   border-radius: 10px;
@@ -107,6 +107,7 @@ body {
   background-image: none;
   width: auto;
   height: auto;
+  font-family:"Raleway", "Contrail One", "Franklin Gothic Medium Extended";
 }
 .promo-box {
   color: #5ecade;
