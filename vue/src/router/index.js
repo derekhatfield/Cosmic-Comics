@@ -6,7 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Collections from '../views/Collections.vue'
-import AddAComic from '../views/AddAComic.vue'
+import Comics from '../views/Comics.vue'
 import CreateACollection from '../views/CreateACollection.vue'
 Vue.use(Router)
 
@@ -66,9 +66,9 @@ const router = new Router({
     },
 
     {
-      path: "/AddAComic",
-      name: "AddAComic",
-      component: AddAComic,
+      path: "/Comics",
+      name: "Comics",
+      component: Comics,
       meta: {
         requiresAuth: false
       }

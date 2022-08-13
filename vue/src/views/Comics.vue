@@ -1,6 +1,6 @@
 <template>
-  <div class="Cosmic Add A Comic">
-    <h1 class="Add A Comic">Add A Comic</h1>
+  <div class="Cosmic Comics">
+    <h1 class="Comics">Comics</h1>
     <navigation-bar/>
     <body>
       <div>
@@ -13,7 +13,7 @@
 <script>
 import NavigationBar from '@/components/NavigationBar';
 export default {
-  name: "Add A Comic",
+  name: "Comics",
   components: {
     NavigationBar
   }
@@ -39,7 +39,7 @@ font-family: "Raleway";
   letter-spacing: 11px;
   word-spacing: 20px;
   text-shadow: 2px 2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
-    -2px -2px 0 black, 1px 1px 0 black, 3px 3px 0 #2adda7;
+    -2px -2px 0 black, 5px 5px 0 black, 7px 7px 0 #2adda7, 8px 8px 0 #d890ff;
 
 }
 </style>

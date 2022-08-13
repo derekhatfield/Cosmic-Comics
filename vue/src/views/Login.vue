@@ -16,42 +16,30 @@
         </div>
 
         <section>
-
           <div class="login-section">
-          <label for="username" class="username-and-password-tag"
-            >Username</label
-          >
-          <input
-            type="text"
-            id="Username"
-            class="form-control"
-            placeholder="username"
-            v-model="user.username"
-            required
-            autofocus
-          />
-          <label for="password" class="username-and-password-tag"
-            >Password</label
-          >
-          <input
-            type="password"
-            id="password"
-            class="form-control"
-            placeholder="Password"
-            v-model="user.password"
-            required
-          />
+
+            
+            <form action="/action_page.php">
+
+              <label for="username" class="username-tag">Username</label>
+              <input type="username" id="Username" class="username-form-control" placeholder="Username" v-model="user.username" required autofocus/>
+              
+              <label for="password" class="password-tag">Password</label>
+              <input type="password" id="password" class="password-form-control" placeholder="Password" v-model="user.password" required/>
+
+            </form>
+
           </div>
 
           <div class="need-account-clickable">
             <button class="submit" type="submit">Login</button>
             <router-link :to="{ name: 'register' }"
-              ><button class="register" type="Register">Need an account?</button></router-link
+              ><button class="register" type="Register">
+                Need an account?
+              </button></router-link
             >
           </div>
         </section>
-
-
       </body>
     </form>
   </div>
@@ -119,34 +107,48 @@ body {
   margin: 75px 10px 100px 10px;
 }
 
-.login-in { /* Please Login */
+.login-in {
+  /* Please Login Button */
   font-family: "Raleway";
-  letter-spacing: 3px;
+  letter-spacing: 11px;
   color: white;
   border: 0;
   padding: 0;
-  margin: 30px;
+  margin-top: 100px;
+  margin-bottom: 135px;
+  margin-right: 100px;
+  margin-left: 100px;
   width: auto;
   height: auto;
   text-align: center;
-  font-size: 100px;
+  font-size: 125px;
   color: #4bd668;
   font-family: "Bangers";
-  letter-spacing: 11px;
   word-spacing: 20px;
   text-shadow: 2px 2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
-    -2px -2px 0 black, 1px 1px 0 black, 3px 3px 0 #2adda7;
+    -2px -2px 0 black, 5px 5px 0 black, 7px 7px 0 #2adda7, 8px 8px 0 #d890ff;
 }
 
-.username-and-password-tag {
+.username-tag {
   color: white;
   margin: 0px;
   font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
-  font-size: 24px;
-  margin: 40px;
+  font-size: 40px;
+  margin-right: 36px;
+  margin-left: 25%;
 }
 
-button {
+.password-tag {
+  color: white;
+  margin: 0px;
+  font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
+  font-size: 40px;
+  margin-right: 50px;
+  margin-left: 25%;
+}
+
+button.submit {
+  /* "Login" Button */
   color: #3db656;
   display: inline-block;
   background-color: transparent;
@@ -154,11 +156,14 @@ button {
   border-style: inset;
   font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
   font-size: 24px;
-  border: 3px solid #D890FF;
+  border: 3px solid #d890ff;
   background-color: navy;
   border-radius: 10px;
-  margin: 10px;
-  padding: 0;
+  margin: auto;
+  padding-right: 5%;
+  padding-left: 5%;
+  padding-top: 6%;
+  padding-bottom: 6%;
   text-align: center;
   letter-spacing: 0.5px;
   word-spacing: 1px;
@@ -167,24 +172,42 @@ button {
   block-size: fit-content;
 }
 
+a {
+  /* "Need an Account?" Button */
+  color: #3db656;
+  display: inline-block;
+  background-color: transparent;
+  background-image: none;
+  font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
+  font-size: 15px;
+  margin: auto;
+  padding: 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+  word-spacing: 1px;
+  width: fit-content;
+  block-size: fit-content;
+  text-decoration: none;
+}
+
 .login-section {
   margin: auto;
   width: fit-content;
 }
 
-.need-account-clickable
-{
+.need-account-clickable {
+  /* Ranges from "Login" & "Need an Account?" buttons */
   display: flex;
   margin: auto;
   width: fit-content;
-  flex-direction: row;
+  flex-direction: column;
   padding: 50px;
   letter-spacing: 1px;
   word-spacing: 0;
+  text-decoration: none;
 }
 
-.register
-{
+button.register {
   display: flex;
   margin: 10px;
   width: fit-content;
@@ -195,21 +218,78 @@ button {
   padding-bottom: 4.5%;
   letter-spacing: 1px;
   word-spacing: 0;
+  font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
   
 }
 
-.submit
-{
-  display: flex;
-  margin: 10px;
-  width: fit-content;
-  flex-direction: row;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 3%;
-  padding-bottom: 3%;
-  letter-spacing: 1px;
-  word-spacing: 0;
-  
+/* Style inputs */
+  input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
+  font-size: 25px;
 }
+
+
+/* Style the submit button */
+input[type=submit] {
+  width: 100%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+/*  
+.form-control {
+  /* Controls the boxes for Username & Password 
+  background-color: #98f5d9;
+  border: transparent;
+  font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+.username-form-control {
+  /* Controls the boxes for Username & Password 
+  background-color: #98f5d9;
+  border: transparent;
+  font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
+  font-size: 25px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 50%;
+  margin-left: 50%;
+}
+
+.password-form-control {
+  /* Controls the boxes for Username & Password 
+  background-color: #98f5d9;
+  border: transparent;
+  font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
+  font-size: 25px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  margin-right: 50%;
+  margin-left: 50%;
+}
+
+*/
+
 </style>

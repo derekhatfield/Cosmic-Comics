@@ -45,14 +45,16 @@
   </div>
 </template>
 
+
 <style>
 
-/* .cursor {
-  width: 200px;
-  height: 200px;
-  cursor: url(http://www.rw-designer.com/cursor-extern.php?id=118271), auto;
-} */
 
+
+body{ /* Thor Cursor */
+cursor: url(https://64.media.tumblr.com/9c3614e3a555d94e0547732afc46b5e6/a02dfc418c2b33f7-65/s100x200/77b98e48aff7c67333405a4e3dcbda2743446b12.png), auto
+};
+
+/* The WHITE BORDER IS BACKKKK but this thing below originally fixed it */
 * {
   margin: 0;
   padding: 0;
@@ -61,8 +63,9 @@
 p {
   display: inline-block;
   vertical-align: middle;
-  margin: 0 0 0 0;
+  margin: 0;
   width: auto;
+  padding: auto;
 }
 #app {
   background-image: url("assets/CC Wallpaper.png");
@@ -84,7 +87,7 @@ p {
 .header-box {
   border: 3px solid #d890ff;
   border-style: inset;
-  background-image: none;
+  background-image: linear-gradient(navy, rgb(65, 65, 184), navy);
   background-color: navy;
   border-radius: 10px;
   margin: 10px;
@@ -121,5 +124,6 @@ footer {
 .logo {
   width: 100%;
   height: 100%;
+  margin: 7px;
 }
 </style>
