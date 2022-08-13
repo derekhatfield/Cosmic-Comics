@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <!-- <div class="cursor">
-      <link
-      href="http://www.rw-designer.com/cursor-set/superheroes-marvel"/>
-    </div> -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Bangers"
