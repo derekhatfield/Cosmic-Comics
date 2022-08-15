@@ -7,6 +7,7 @@ public class OverallMarvel {
     public OverallMarvel() { }
 
     public OverallMarvel(OverallMarvelData data) {
+        super();
         this.data = data;
     }
 

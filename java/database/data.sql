@@ -7,11 +7,11 @@ INSERT INTO collections (user_id,collection_name) VALUES (1,'testName');
 INSERT INTO collections (user_id,collection_name) VALUES (1,'testName2');
 INSERT INTO collections (user_id,collection_name) VALUES (2,'testName3');
 
-INSERT INTO comics (comic_author,comic_issue,comic_title,comic_series) VALUES ('testAuthor',4,'testTitle','testSeries');
-INSERT INTO comics (comic_author,comic_issue,comic_title,comic_series) VALUES ('testAuthor2',2,'testTitle2','testSeries2');
-INSERT INTO comics (comic_author,comic_issue,comic_title,comic_series) VALUES ('testAuthor3',4,'testTitle3','testSeries3');
-INSERT INTO comics (comic_author,comic_issue,comic_title,comic_series) VALUES ('testAuthor4',1,'testTitle4','testSeries4');
-INSERT INTO comics (comic_author,comic_issue,comic_title,comic_series) VALUES ('testAuthor5',4,'testTitle5','testSeries5');
+INSERT INTO comics (title,thumbnail_url) VALUES ('testTitle','google.com');
+INSERT INTO comics (title,thumbnail_url) VALUES ('testTitle1','google.com');
+INSERT INTO comics (title,thumbnail_url) VALUES ('testTitle2','google.com');
+INSERT INTO comics (title,thumbnail_url) VALUES ('testTitle3','google.com');
+INSERT INTO comics (title,thumbnail_url) VALUES ('testTitle4','google.com');
 
 INSERT INTO comics_collections (comic_id, collection_id) VALUES (1,1);
 INSERT INTO comics_collections (comic_id, collection_id) VALUES (1,2);

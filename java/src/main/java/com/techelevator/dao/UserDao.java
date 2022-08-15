@@ -15,4 +15,8 @@ public interface UserDao {
     int findIdByUsername(String username);
 
     boolean create(String username, String password, String role);
+
+    String getUsername(int id);
+
+    List<User> getUsers(String name, int number, int page);
 }

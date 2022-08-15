@@ -1,20 +1,21 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.CollectionDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Collection;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin("http://localhost:8080/")
+@CrossOrigin
 @RequestMapping("/collections")
 public class CollectionController {
 
-    //TODO: Check paths to align with front end
-
     private CollectionDao collectionDao;
+    private UserDao userDao;
 
-    public CollectionController(CollectionDao collectionDao) {
+    public CollectionController(CollectionDao collectionDao, UserDao userDao) {
         this.collectionDao = collectionDao;
+        this.userDao = userDao;
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
@@ -23,8 +24,8 @@ public class CollectionController {
     }
 
     @RequestMapping(path = "/users/{userId}", method = RequestMethod.POST)
-    public Collection createCollectionByUserId(@RequestBody Collection newCollection, @PathVariable int userId){
-        return collectionDao.createNewCollection(newCollection, userId);
+    public void createCollectionByUserId(@RequestBody Collection newCollection, @PathVariable int userId){
+        collectionDao.createNewCollection(newCollection);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)

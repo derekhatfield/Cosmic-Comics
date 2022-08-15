@@ -1,13 +1,19 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Comic;
+import com.techelevator.model.MarvelDataModels.OverallMarvelResults;
+
+import java.util.List;
 
 public interface ComicDao {
 
-    Comic getComicByComicId(int comicId);
+    OverallMarvelResults getComicByComicId(int comicId);
 
-    Comic addComicByComicId(Comic comicToAdd, int comidId);
+    //OverallMarvelResults addComicByComicId(int comicId);
 
-    void removeComicByComicId(int comicId);
+    //OverallMarvelResults removeComicByComicId(int comicId);
+
+    List<OverallMarvelResults> getComicsByCollectionId(int collectionId);
+
+    String getThumbnailById(int id);
 
 }

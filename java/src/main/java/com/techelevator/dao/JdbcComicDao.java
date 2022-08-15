@@ -1,9 +1,14 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Comic;
+import com.techelevator.model.MarvelDataModels.MarvelThumbnail;
+import com.techelevator.model.MarvelDataModels.OverallMarvelResults;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class JdbcComicDao implements ComicDao {
@@ -15,10 +20,10 @@ public class JdbcComicDao implements ComicDao {
     }
 
     @Override
-    public Comic getComicByComicId(int comicId) {
-        Comic comic = null;
-        String sql = "SELECT * FROM comics WHERE comic_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, comicId);
+    public OverallMarvelResults getComicByComicId(int id) {
+        OverallMarvelResults comic = null;
+        String sql = "SELECT comic_id, title, thumbnail_url FROM comics WHERE comic_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         if (results.next()) {
             comic = mapRowToComic(results);
         }
@@ -26,32 +31,32 @@ public class JdbcComicDao implements ComicDao {
     }
 
     @Override
-    public Comic addComicByComicId(Comic comicToAdd, int comicId) {
-        Comic comic = null;
-        String sql = "INSERT INTO comics (comic_author, comic_issue, comic_title, comic_series, comic_thumbnail_url) " +
-                "VALUES (?, ?, ?, ?, ?) RETURNING comic_id;";
-        Integer newId = jdbcTemplate.queryForObject(sql, Integer.class, comicToAdd.getComicAuthor(), comicToAdd.getComicIssue(), comicToAdd.getComicTitle(),
-                comicToAdd.getComicSeries(), comicToAdd.getComicThumbnailUrl());
-
-        return getComicByComicId(newId);
+    public List<OverallMarvelResults> getComicsByCollectionId(int id) {
+        List<OverallMarvelResults> comics = new ArrayList<>();
+        String sql = "SELECT c.comic_id, c.title, c.thumbnail_url FROM comics_collections AS cc " +
+                "INNER JOIN comics AS c ON c.comic_id = cc.comic_id WHERE cc.collection_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        while (results.next()) {
+            comics.add(mapRowToComic(results));
+        }
+        return comics;
     }
 
     @Override
-    public void removeComicByComicId(int comicId) {
-        String sql = "DELETE FROM comics_collections WHERE comic_id = ?;";
-        jdbcTemplate.update(sql, comicId);
-        sql = "DELETE FROM comics WHERE comic_id = ?;";
-        jdbcTemplate.update(sql, comicId);
+    public String getThumbnailById(int id) {
+        String sql = "SELECT thumbnail_url FROM comics WHERE comic_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        if (results.next()) {
+            return results.getString("thumbnail_url");
+        }
+        return "";
     }
 
-    private Comic mapRowToComic(SqlRowSet rowSet) {
-        Comic comic = new Comic();
-        comic.setComicId(rowSet.getInt("comic_id"));
-        comic.setComicAuthor(rowSet.getString("comic_author"));
-        comic.setComicIssue(rowSet.getInt("comic_issue"));
-        comic.setComicTitle(rowSet.getString("comic_title"));
-        comic.setComicSeries(rowSet.getString("comic_series"));
+    private OverallMarvelResults mapRowToComic(SqlRowSet rowSet) {
+        OverallMarvelResults comic = new OverallMarvelResults();
+        comic.setId(rowSet.getInt("comic_id"));
+        comic.setTitle(rowSet.getString("title"));
+        comic.setThumbnail(new MarvelThumbnail(rowSet.getString("thumbnail_url"), ""));
         return comic;
     }
-
 }

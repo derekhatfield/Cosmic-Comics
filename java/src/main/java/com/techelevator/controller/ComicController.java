@@ -3,10 +3,11 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ComicDao;
 import com.techelevator.model.Comic;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin("http://localhost:8080/")
+@CrossOrigin
 @RequestMapping("/comics")
 public class ComicController {
 
@@ -16,9 +17,10 @@ public class ComicController {
         this.comicDao = comicDao;
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public Comic getComicByComicId(@PathVariable int id) {
-        return comicDao.getComicByComicId(id);
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/thumbnail/{comicId}", method = RequestMethod.GET)
+    public String getThumbnail(@PathVariable int comicId) {
+        return comicDao.getThumbnailById(comicId);
     }
 
 }

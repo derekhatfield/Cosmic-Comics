@@ -8,6 +8,7 @@ public class MarvelThumbnail {
     public MarvelThumbnail() { }
 
     public MarvelThumbnail(String path, String extension) {
+        super();
         this.path = path;
         this.extension = extension;
     }

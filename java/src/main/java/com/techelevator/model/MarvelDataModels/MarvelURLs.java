@@ -7,6 +7,7 @@ public class MarvelURLs {
     public MarvelURLs() { }
 
     public MarvelURLs(String url) {
+        super();
         this.url = url;
     }
 
