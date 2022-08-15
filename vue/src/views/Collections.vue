@@ -16,20 +16,20 @@
         <a href="#character">Character</a>
         <a href="#collection">Collection</a>
       </div>
-      <body>
-        
-      </body>
+      <collections-list/>
     </div>
   </div>
 </template>
 
 <script>
+import CollectionsList from "@/components/CollectionsList";
 import NavigationBar from "@/components/NavigationBar";
 import CollectionService from "@/services/CollectionService.js";
 export default {
   name: "Collections",
   components: {
     NavigationBar,
+    CollectionsList
   },
 
   data() {
