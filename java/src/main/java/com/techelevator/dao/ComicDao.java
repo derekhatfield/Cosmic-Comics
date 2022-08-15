@@ -8,9 +8,15 @@ public interface ComicDao {
 
     OverallMarvelResults getComicByComicId(int comicId);
 
-    //OverallMarvelResults addComicByComicId(int comicId);
+    //OverallMarvelResults addComic(int comicId);
 
-    //OverallMarvelResults removeComicByComicId(int comicId);
+    //OverallMarvelResults removeComic(int comicId);
+
+    //List<OverallMarvelResults> getComicsByCharacter(int characterId);
+
+    //List<OverallMarvelResults> getComicsByAuthor(int authorId);
+
+    boolean hasAuthor(int comicId, int authorId);
 
     List<OverallMarvelResults> getComicsByCollectionId(int collectionId);
 

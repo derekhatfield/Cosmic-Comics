@@ -26,7 +26,7 @@ public class MarvelController {
     public static RestTemplate restTemplate = new RestTemplate();
     public static ObjectMapper objectMapper = new ObjectMapper();
 
-    public static String replace(String s, String searchFor, String replacement) {
+    /* public static String replace(String s, String searchFor, String replacement) {
         for (int i=0; i < s.length() - searchFor.length() + 1; i++) {
             if (s.charAt(i) == searchFor.charAt(0) && s.substring(i, i + searchFor.length()).equals(searchFor)) {
                 s = s.substring(0, i) + replacement + s.substring(i + searchFor.length());
@@ -34,7 +34,7 @@ public class MarvelController {
             }
         }
         return s;
-    }
+    }*/
 
     public static String createURL(String uri) {
         return MARVEL_API_BASE_URL + uri + MARVEL_API_TS + MARVEL_API_PUBLIC_KEY + MARVEL_API_HASH;

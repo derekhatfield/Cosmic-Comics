@@ -38,7 +38,7 @@ public class CollectionController {
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public Collection getCollectionByCollectionId(@PathVariable int id) {
-        Collection collection = collectionDao.getCollectionByCollectionId(id);
+        Collection collection = collectionDao.getCollectionById(id);
         return collection;
     }
 
@@ -51,12 +51,12 @@ public class CollectionController {
 
     @RequestMapping(path = "/create", method = RequestMethod.POST)
     public void addCollection(@RequestBody Collection newCollection){
-        collectionDao.createNewCollection(newCollection);
+        collectionDao.addCollection(newCollection);
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public void deleteCollectionByCollectionId(@PathVariable int id) {
-        collectionDao.deleteCollectionByCollectionId(id);
+        collectionDao.removeCollection(id);
     }
 
 }

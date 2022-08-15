@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CollectionDao {
 
-    Collection getCollectionByCollectionId(int collectionId);
+    Collection getCollectionById(int collectionId);
 
     List<Collection> getCollections();
 
@@ -19,9 +19,15 @@ public interface CollectionDao {
 
     List<Collection> getCollectionsByUser(int userId);
 
-    void createNewCollection(Collection collectionToCreate);
+    void addCollection(Collection collectionToCreate);
 
-    void deleteCollectionByCollectionId(int collectionId);
+    void removeCollection(int collectionId);
+
+    void addComic(OverallMarvelResults newComic, int collectionId);
+
+    void deleteComic(int collectionId, int comicId);
+
+    int getCollectionOwnerId(int collectionId);
 
     List<Collection> getCollectionsByUserId(int userId);
 

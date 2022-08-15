@@ -31,6 +31,13 @@ public class JdbcComicDao implements ComicDao {
     }
 
     @Override
+    public boolean hasAuthor(int comicId, int authorId) {
+        String sql = "SELECT comic_id FROM comics_creators WHERE comic_id = ? AND creator_id =?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, comicId, authorId);
+        return results.next();
+    }
+
+    @Override
     public List<OverallMarvelResults> getComicsByCollectionId(int id) {
         List<OverallMarvelResults> comics = new ArrayList<>();
         String sql = "SELECT c.comic_id, c.title, c.thumbnail_url FROM comics_collections AS cc " +
