@@ -35,6 +35,44 @@ public class JdbcCollectionDao implements CollectionDao {
     }
 
     @Override
+    public List<Collection> getCollections(String sql, Object[] args, int[] types) {
+        List<Collection> collections = new ArrayList<>();
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, args, types);
+        while (results.next()) {
+            collections.add(mapRowToCollection(results));
+        }
+        return collections;
+    }
+
+    @Override
+    public List<Collection> getCollections(String name, int limit, int page, int userId) {
+        List<Collection> collections = new ArrayList<>();
+        String sql = "SELECT * FROM collections AS c WHERE c.collection_name ILIKE ? AND (c.user_id = ?) GROUP BY " +
+                "c.collection_id ORDER BY c.collection_id ASC LIMIT ? OFFSET ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + name + "%", userId, limit, page*limit);
+        while (results.next()) {
+            collections.add(mapRowToCollection(results));
+        }
+        return collections;
+    }
+
+    @Override
+    public List<Collection> getCollections(String name, int limit, int page) {
+        List<Collection> collections = new ArrayList<>();
+        String sql = "SELECT * FROM collections AS c WHERE c.collection_name ILIKE ? GROUP BY c.collection_id ASC LIMIT ? OFFSET ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + name + "%", limit, page*limit);
+        while (results.next()) {
+            collections.add(mapRowToCollection(results));
+        }
+        return collections;
+    }
+
+    @Override
+    public List<Collection> getCollectionsByUser(int userId) {
+        return getCollections("SELECT * FROM collections;", new Object[] {userId}, new int[] {java.sql.Types.INTEGER});
+    }
+
+    @Override
     public void createNewCollection(Collection newCollection) {
         String sql = "INSERT INTO collections (user_id, collection_name) VALUES (?, ?);";
         jdbcTemplate.update(sql, newCollection.getUserId(), newCollection.getName());

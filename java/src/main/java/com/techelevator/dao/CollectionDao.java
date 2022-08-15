@@ -9,6 +9,14 @@ public interface CollectionDao {
 
     Collection getCollectionByCollectionId(int collectionId);
 
+    List<Collection> getCollections(String sql, Object[] args, int[] types);
+
+    List<Collection> getCollections(String name, int limit, int page, int userId);
+
+    List<Collection> getCollections(String name, int limit, int page);
+
+    List<Collection> getCollectionsByUser(int userId);
+
     void createNewCollection(Collection collectionToCreate);
 
     void deleteCollectionByCollectionId(int collectionId);
