@@ -35,6 +35,11 @@ public class JdbcCollectionDao implements CollectionDao {
     }
 
     @Override
+    public List<Collection> getCollections() {
+        return getCollections("SELECT * FROM collections", new Object[] {}, new int[] {});
+    }
+
+    @Override
     public List<Collection> getCollections(String sql, Object[] args, int[] types) {
         List<Collection> collections = new ArrayList<>();
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, args, types);

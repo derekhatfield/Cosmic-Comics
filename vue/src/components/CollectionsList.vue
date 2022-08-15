@@ -1,7 +1,10 @@
 <template>
   <div class="comic-container">
     <comic-card />
-    <p>{{collections}}</p>
+    <div v-for="collection in collections" v-bind:key="collection.name" class="collectionsDiv">
+      <h1>{{collection.name}}</h1>
+    </div>
+    
   </div>
 </template>
 
@@ -15,7 +18,14 @@ export default {
   },
   data() {
     return {
+      username: '',
       collections: [],
+      results: {
+        data: {
+          results: []
+        }
+      },
+      showForm: false
     };
   },
   created() {

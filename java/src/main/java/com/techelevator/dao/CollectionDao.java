@@ -9,6 +9,8 @@ public interface CollectionDao {
 
     Collection getCollectionByCollectionId(int collectionId);
 
+    List<Collection> getCollections();
+
     List<Collection> getCollections(String sql, Object[] args, int[] types);
 
     List<Collection> getCollections(String name, int limit, int page, int userId);

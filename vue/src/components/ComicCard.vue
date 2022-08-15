@@ -5,8 +5,6 @@
       <div class="button">
           <button class="add-a-comic">Add a comic</button>
       </div>
-      
-
   </div>
 </template>
 

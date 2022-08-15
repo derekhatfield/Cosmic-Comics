@@ -12,10 +12,30 @@
 
 <script>
 import NavigationBar from '@/components/NavigationBar';
+import CollectionService from "@/services/CollectionService.js";
+
 export default {
   name: "Create A Collection",
   components: {
     NavigationBar
+  },
+  data() {
+    return {
+      username: '',
+      collections: [],
+      results: {
+        data: {
+          results: []
+        }
+      },
+      showForm: false
+    };
+  },
+  // TODO: addCollection method
+  created() {
+    CollectionService.addCollection().then((response) => {
+      this.collections = response.data;
+    });
   }
 };
 </script>

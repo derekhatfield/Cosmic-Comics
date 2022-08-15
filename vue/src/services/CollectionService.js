@@ -10,7 +10,16 @@ export default {
         return http.get(`/collections`);
     },
 
-    getCollection(id) {
+    getCollectionById(id) {
         return http.get(`/collections/${id}`);
+    },
+
+    getCollectionsByUsername(username) {
+        return http.get(`/collections/mycollections/${username}`);
+    },
+
+    addCollection(collection) {
+        return http.post('/collections/create', collection);
     }
+
 }

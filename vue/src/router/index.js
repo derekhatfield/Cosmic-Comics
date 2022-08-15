@@ -58,7 +58,7 @@ const router = new Router({
 
     {
       path: "/collections",
-      name: "Collections",
+      name: "collections",
       component: Collections,
       meta: {
         requiresAuth: false
@@ -66,8 +66,8 @@ const router = new Router({
     },
 
     {
-      path: "/Comics",
-      name: "Comics",
+      path: "/comics",
+      name: "comics",
       component: Comics,
       meta: {
         requiresAuth: false
@@ -75,7 +75,7 @@ const router = new Router({
     },
 
     {
-      path: "/CreateACollection",
+      path: "/collections/create",
       name: "CreateACollection",
       component: CreateACollection,
       meta: {

@@ -1,12 +1,12 @@
 <template>
   <div class="navigation-container">
     <div class="nav-box">
-      <router-link v-bind:to="{ name: 'Comics' }" tag="p"
+      <router-link v-bind:to="{ name: 'comics' }" tag="p"
         >Comics</router-link
       >
     </div>
     <div class="nav-box">
-      <router-link v-bind:to="{ name: 'Collections' }" tag="p"
+      <router-link v-bind:to="{ name: 'collections' }" tag="p"
         >Collections</router-link
       >
     </div>

@@ -22,10 +22,17 @@ public class CollectionController {
         this.userDao = userDao;
     }
 
-    @RequestMapping(path = "/owner/{username}", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Collection> getAllCollections() {
+        List<Collection> collections = collectionDao.getCollections();
+        return collections;
+    }
+
+    @RequestMapping(path = "/mycollections/{username}", method = RequestMethod.GET)
     public OverallMarvel getCollectionsByUsername(@PathVariable String username)  {
         List<Collection> collections;
         collections = collectionDao.getCollectionsByUser(userDao.findIdByUsername(username));
+        collections.addAll(collectionDao.getCollections());
         return new OverallMarvel().setData(new OverallMarvelData().setResultsList(collections).setCount(collections.size()).setTotal(collections.size()));
     }
 
@@ -42,8 +49,8 @@ public class CollectionController {
         return new OverallMarvel().setData(new OverallMarvelData().setResultsList(collections).setCount(collections.size()).setTotal(collectionDao.getCollections("", Integer.MAX_VALUE, 0).size()));
     }
 
-    @RequestMapping(path = "/users/{userId}", method = RequestMethod.POST)
-    public void createCollectionByUserId(@RequestBody Collection newCollection, @PathVariable int userId){
+    @RequestMapping(path = "/create", method = RequestMethod.POST)
+    public void addCollection(@RequestBody Collection newCollection){
         collectionDao.createNewCollection(newCollection);
     }
 
