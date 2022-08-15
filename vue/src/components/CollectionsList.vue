@@ -1,6 +1,7 @@
 <template>
   <div class="comic-container">
     <comic-card />
+    <p>{{collections}}</p>
   </div>
 </template>
 
