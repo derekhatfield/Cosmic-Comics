@@ -21,6 +21,7 @@ export default {
   created() {
     CollectionService.getAllCollections().then((response) => {
       this.collections = response.data;
+      console.log(this.collections);
     });
   },
 };

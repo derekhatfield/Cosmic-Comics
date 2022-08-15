@@ -7,10 +7,10 @@ const http = axios.create({
 export default {
 
     getAllCollections() {
-        return http.get(`/Collection`);
+        return http.get(`/collections`);
     },
 
     getCollection(id) {
-        return http.get(`/Collections/${id}`);
+        return http.get(`/collections/${id}`);
     }
 }
