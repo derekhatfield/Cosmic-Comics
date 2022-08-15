@@ -2,15 +2,6 @@
   <div class="CosmicCollections">
     <h1 class="Collections">Cosmic Collections</h1>
     <navigation-bar />
-    <table>
-      <tbody>
-        <tr v-for="collection in collections" v-bind:key="collection.id">
-          <td>
-            {{ collection.id }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
 
     <div class="filter tool">
       <button onclick="myFunction()" class="dropButton">Filter By</button>
@@ -44,7 +35,7 @@ export default {
   data() {
     return {
       collection: {
-        collectionId: "",
+        id: "",
       },
     };
   },
