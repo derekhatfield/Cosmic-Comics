@@ -2,13 +2,15 @@ package com.techelevator.controller;
 
 
 import com.techelevator.dao.ComicDao;
-import com.techelevator.model.Comic;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import java.security.Principal;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/comics")
+@PreAuthorize("isAuthenticated()")
 public class ComicController {
 
     private ComicDao comicDao;
@@ -18,8 +20,9 @@ public class ComicController {
     }
 
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("permitAll()")
     @RequestMapping(path = "/thumbnail/{comicId}", method = RequestMethod.GET)
-    public String getThumbnail(@PathVariable int comicId) {
+    public String getThumbnail(@PathVariable int comicId, Principal principal) {
         return comicDao.getThumbnailById(comicId);
     }
 

@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 @RestController
 @CrossOrigin
@@ -26,7 +29,22 @@ public class MarvelController {
     public static RestTemplate restTemplate = new RestTemplate();
     public static ObjectMapper objectMapper = new ObjectMapper();
 
-    /* public static String replace(String s, String searchFor, String replacement) {
+    public static SortedMap<String, String> ILLEGAL_CHARACTERS = new TreeMap<>();
+    static {
+        ILLEGAL_CHARACTERS.put(" ", "+");
+        ILLEGAL_CHARACTERS.put("!", "%21");
+        ILLEGAL_CHARACTERS.put("@", "%40");
+        ILLEGAL_CHARACTERS.put("#", "%23");
+        ILLEGAL_CHARACTERS.put("$", "%24");
+        ILLEGAL_CHARACTERS.put("^", "%5E");
+        ILLEGAL_CHARACTERS.put("&", "%26");
+        ILLEGAL_CHARACTERS.put("\'", "%27");
+        ILLEGAL_CHARACTERS.put("(", "%28");
+        ILLEGAL_CHARACTERS.put(")", "%29");
+        ILLEGAL_CHARACTERS.put(",", "%2C");
+    }
+
+    public static String replace(String s, String searchFor, String replacement) {
         for (int i=0; i < s.length() - searchFor.length() + 1; i++) {
             if (s.charAt(i) == searchFor.charAt(0) && s.substring(i, i + searchFor.length()).equals(searchFor)) {
                 s = s.substring(0, i) + replacement + s.substring(i + searchFor.length());
@@ -34,7 +52,7 @@ public class MarvelController {
             }
         }
         return s;
-    }*/
+    }
 
     public static String createURL(String uri) {
         return MARVEL_API_BASE_URL + uri + MARVEL_API_TS + MARVEL_API_PUBLIC_KEY + MARVEL_API_HASH;
@@ -61,14 +79,20 @@ public class MarvelController {
         }
 
         public static OverallMarvel getComicsByName(String name) {
-            // TODO: replace?
+            name = replace(name, "%", "%25");
+            for (Map.Entry<String,String> entry : ILLEGAL_CHARACTERS.entrySet()) {
+                name = replace(name, entry.getKey(), entry.getValue());
+            }
             return getOverallMarvel("comics?" + (name.equals("0")?"": "titleStartsWith="+name + "&") + "limit=30");
         }
 
         public static OverallMarvel getComicsByName(String name, int pageNum) {
-            // TODO: replace?
             if (name.equals("0")) {
                 name = "";
+            }
+            name = replace(name, "%", "%25");
+            for (Map.Entry<String,String> entry : ILLEGAL_CHARACTERS.entrySet()) {
+                name = replace(name, entry.getKey(), entry.getValue());
             }
             return getOverallMarvel("comics?" + (name.equals("0")?"": "titleStartsWith="+name + "&") + "limit=30&offset="+(pageNum*30));
         }
@@ -87,10 +111,9 @@ public class MarvelController {
                 return comicThumbnail.getPath() + "." + comicThumbnail.getExtension();
             } catch (Exception e) {
                 e.printStackTrace();
+                return "There was an error.";
             }
-            return "There was an error.";
         }
-
     }
 
     public static abstract class Character {
@@ -124,7 +147,6 @@ public class MarvelController {
             }
             return "There was an error.";
         }
-
     }
 
     public static abstract class Creator {
@@ -132,8 +154,6 @@ public class MarvelController {
         public static OverallMarvel getCreatorByComicId(int id) {
             return getOverallMarvel("creators?comics=" + id);
         }
-
     }
-
 
 }
