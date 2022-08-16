@@ -20,6 +20,7 @@
         v-for="comic in sortComicsByUserInput"
         v-bind:key="comic.marvelId"
       >
+      <button class="UserCollection">Add to Collection</button>
         <img :src="comic.imageURL" alt="" />
         <h2>{{ comic.comicTitle }}</h2>
       </div>
@@ -205,5 +206,13 @@ height: 178.125px;
   color: white;
   font-family: "Bangers";
   letter-spacing: 2px;
+}
+
+button {
+  text-justify: center;
+  color: pink;
+  border: white;
+  border-style: solid;
+  border-radius: 0px;
 }
 </style>
