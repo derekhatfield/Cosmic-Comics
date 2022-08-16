@@ -87,7 +87,7 @@ p {
   background-color: navy;
   border-radius: 10px;
   margin: 10px;
-  padding: 2%;
+  padding: 1.5% 1% 1.5% 1%;
   text-align: center;
   color: #5ecade;
   font-family: "Contrail One", "Raleway", "Franklin Gothic Medium Extended";
@@ -96,7 +96,7 @@ p {
   font-weight: bold;
   font-size: 150%;
   justify-content: right;
-  width: fit-content;
+  width: auto;
   block-size: fit-content;
   display: inline-block;
 }

@@ -13,26 +13,16 @@
         >Create A Collection</router-link
       >
 
-      <input
-      class="search-bar-tool"
+      
+    </div>
+
+    <input
+        class="search-bar-tool"
         type="text"
         name="search"
         placeholder=""
         src="@/assets/Search Tool.png"
       />
-    </div>
-    <div class="nav-box">
-      <button type="button">
-        <img
-          src="@/assets/Search Tool.png"
-          alt="Search Tool"
-          class="Search Tool Image"
-          height="50px"
-          width="50px"
-          onclick="Search();"
-        />
-      </button>
-    </div>
   </div>
 </template>
 
@@ -54,22 +44,26 @@ export default {
   color: white;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
-  padding: 1% 6%;
-  margin: 1% 1%;
-/*   background-image: url("/assets/Search Tool.png"); */
-    background-image: url(https://i.postimg.cc/Z5X14FjF/untitled-design-Transparent.png);
-  background-size: contain ;
+  padding: 5.5px;
+  /*   background-image: url("/assets/Search Tool.png"); */
+  background-image: url(https://i.postimg.cc/Z5X14FjF/untitled-design-Transparent.png);
+  background-size: contain;
   background-repeat: no-repeat;
   outline: 0;
   background-size: 50px;
   background-position: 12px;
   border: none;
+  flex-direction: row;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+
 }
 
 /* Search Bar */
 /* When the input field gets focus, change its width to 100% */
 .search-bar-tool[type="text"]:focus {
-  width: 100%;
+  width: 10%;
   font-family: "Contrail One", "Franklin Gothic Medium Extended", "sans-serif";
   text-align: center;
   border: 5px solid #5ecade;
@@ -85,7 +79,6 @@ export default {
   font-family: "Bangers";
   letter-spacing: 2px;
 }
-
 
 .navigation-container {
   background-image: none;
@@ -139,7 +132,7 @@ button {
   border-radius: 10px;
   padding: 1.5% 1% 1.5% 1%;
   line-height: 15px;
-  width: fit-content;
+  width: auto;
   block-size: fit-content;
   margin: 0% 1% 0% 1%;
 }
@@ -154,19 +147,8 @@ button {
   word-spacing: 0;
   font-size: 160%;
   border-radius: 10px;
-  width: 22%;
-  height: 20px;
-}
-
-.nav-box:nth-child(4) {
-  background-image: none;
-  border: transparent;
-  background-color: transparent;
-  border-radius: 10px;
   width: auto;
-  height: auto;
-  margin-bottom: 0px;
-  padding-top: 6px;
+  height: 20px;
 }
 
 img {

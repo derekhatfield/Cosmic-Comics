@@ -97,7 +97,7 @@ h1 /* Title */ {
   margin-left: auto;
   margin-right: 10%; /* This can be adjusted once we have comics in the webpage, it'll move the "Filter By" button */
   margin-top: 2%;
-  display: block;
+  display: flex;
 }
 
 
@@ -143,7 +143,7 @@ h1 /* Title */ {
 .dropdown-content {
   /* Dropdown Content (Hidden by Default) */
   display: none; /* Commanding this on/off seems to bring up the dropdown display */
-  position: absolute;
+  position: fixed;
   background-color: #0b7285;
   min-width: 230px;
   border: 1px solid #2adda7;
@@ -153,6 +153,10 @@ h1 /* Title */ {
   text-align: center;
   font-size: 16px;
   background-image: linear-gradient(#0b7285, #2adda7);
+  margin-left: 80%;
+  margin-right: auto; /* This can be adjusted once we have comics in the webpage, it'll move the "Filter By" button */
+  margin-top: 0;
+
 }
 
 
