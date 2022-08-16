@@ -10,19 +10,8 @@
     </div>
     <div class="nav-box">
       <router-link v-bind:to="{ name: 'createACollection' }" tag="p"
-        >Create A Collection</router-link
-      >
-
-      
+        >Create A Collection</router-link>      
     </div>
-
-    <input
-        class="search-bar-tool"
-        type="text"
-        name="search"
-        placeholder=""
-        src="@/assets/Search Tool.png"
-      />
   </div>
 </template>
 
@@ -34,51 +23,6 @@ export default {
 </script>
 
 <style>
-/* Search Bar */
-.search-bar-tool[type="text"] {
-  width: 65px;
-  height: 65px;
-  font-family: "Contrail One";
-  text-align: center;
-  background-color: transparent;
-  color: white;
-  -webkit-transition: width 0.4s ease-in-out;
-  transition: width 0.4s ease-in-out;
-  padding: 5.5px;
-  /*   background-image: url("/assets/Search Tool.png"); */
-  background-image: url(https://i.postimg.cc/Z5X14FjF/untitled-design-Transparent.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  outline: 0;
-  background-size: 50px;
-  background-position: 12px;
-  border: none;
-  flex-direction: row;
-  display: flex;
-  align-self: center;
-  justify-content: center;
-
-}
-
-/* Search Bar */
-/* When the input field gets focus, change its width to 100% */
-.search-bar-tool[type="text"]:focus {
-  width: 10%;
-  font-family: "Contrail One", "Franklin Gothic Medium Extended", "sans-serif";
-  text-align: center;
-  border: 5px solid #5ecade;
-  border-style: inset;
-  border-radius: 16px;
-  background-color: navy;
-  color: white;
-}
-
-::placeholder {
-  /* "Search Cosmic Comics"*/
-  color: white;
-  font-family: "Bangers";
-  letter-spacing: 2px;
-}
 
 .navigation-container {
   background-image: none;
