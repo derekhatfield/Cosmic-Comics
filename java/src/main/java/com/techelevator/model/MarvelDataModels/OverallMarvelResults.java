@@ -1,4 +1,4 @@
-package com.techelevator.model.MarvelDataModels;
+/*package com.techelevator.model.MarvelDataModels;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -173,4 +173,4 @@ public class OverallMarvelResults {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-}
+}*/

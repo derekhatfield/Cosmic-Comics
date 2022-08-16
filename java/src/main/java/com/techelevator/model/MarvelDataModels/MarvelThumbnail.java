@@ -1,4 +1,4 @@
-package com.techelevator.model.MarvelDataModels;
+/*package com.techelevator.model.MarvelDataModels;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -31,4 +31,4 @@ public class MarvelThumbnail {
     public void setExtension(String extension) {
         this.extension = extension;
     }
-}
+}*/

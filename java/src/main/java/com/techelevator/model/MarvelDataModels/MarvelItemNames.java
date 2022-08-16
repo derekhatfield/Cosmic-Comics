@@ -1,4 +1,4 @@
-package com.techelevator.model.MarvelDataModels;
+/*package com.techelevator.model.MarvelDataModels;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -51,4 +51,4 @@ public class MarvelItemNames {
     public void setType(String type) {
         this.type = type;
     }
-}
+}*/

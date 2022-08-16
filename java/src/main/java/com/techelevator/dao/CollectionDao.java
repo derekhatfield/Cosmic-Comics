@@ -1,7 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Collection;
-import com.techelevator.model.MarvelDataModels.OverallMarvelResults;
+import com.techelevator.model.MarvelModel.MarvelComic;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public interface CollectionDao {
 
     void removeCollection(int collectionId);
 
-    void addComic(OverallMarvelResults newComic, int collectionId);
+    void addComic(int collectionId, int comicId, String comicTitle, String comicURL);
 
     void deleteComic(int collectionId, int comicId);
 

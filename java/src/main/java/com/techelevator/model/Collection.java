@@ -1,30 +1,38 @@
 package com.techelevator.model;
 
-import com.techelevator.model.MarvelDataModels.OverallMarvelResults;
+import com.techelevator.model.MarvelModel.MarvelComic;
 
 import java.util.List;
 
-public class Collection extends OverallMarvelResults {
+public class Collection {
 
-    private List<OverallMarvelResults> comics;
+    private int collectionId;
+    private List<MarvelComic> comics;
     private int userId;
     private String name;
 
     public Collection() { }
 
-    public Collection(int id, List<OverallMarvelResults> comics, int userId, String name) {
-        super();
-        super.setId(id);
+    public Collection(int collectionId, List<MarvelComic> comics, int userId, String name) {
+        this.collectionId = collectionId;
         this.comics = comics;
         this.userId = userId;
         this.name = name;
     }
 
-    public List<OverallMarvelResults> getComicsIds() {
+    public int getCollectionId() {
+        return collectionId;
+    }
+
+    public void setCollectionId(int collectionId) {
+        this.collectionId = collectionId;
+    }
+
+    public List<MarvelComic> getComics() {
         return comics;
     }
 
-    public void setComics(List<OverallMarvelResults> comics) {
+    public void setComics(List<MarvelComic> comics) {
         this.comics = comics;
     }
 
@@ -43,19 +51,5 @@ public class Collection extends OverallMarvelResults {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Collection addComics(List<OverallMarvelResults> comicsToAdd) {
-        this.comics.addAll(comicsToAdd);
-        return this;
-    }
-
-    public Collection removeComics(List<OverallMarvelResults> comicsToRemove) {
-        for (int i=0; i < this.comics.size(); i++) {
-            if (comicsToRemove.contains(this.comics.get(i))) {
-                this.comics.remove(i--);
-            }
-        }
-        return this;
     }
 }

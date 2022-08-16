@@ -1,12 +1,13 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.MarvelDataModels.OverallMarvelResults;
+
+import com.techelevator.model.MarvelModel.MarvelComic;
 
 import java.util.List;
 
 public interface ComicDao {
 
-    OverallMarvelResults getComicByComicId(int comicId);
+    MarvelComic getComicByComicId(int comicId);
 
     //OverallMarvelResults addComic(int comicId);
 
@@ -18,7 +19,7 @@ public interface ComicDao {
 
     boolean hasAuthor(int comicId, int authorId);
 
-    List<OverallMarvelResults> getComicsByCollectionId(int collectionId);
+    List<MarvelComic> getComicsByCollectionId(int collectionId);
 
     String getThumbnailById(int id);
 

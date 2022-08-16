@@ -1,8 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Comic;
-import com.techelevator.model.MarvelDataModels.MarvelThumbnail;
-import com.techelevator.model.MarvelDataModels.OverallMarvelResults;
+import com.techelevator.model.MarvelModel.MarvelComic;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -20,8 +18,8 @@ public class JdbcComicDao implements ComicDao {
     }
 
     @Override
-    public OverallMarvelResults getComicByComicId(int id) {
-        OverallMarvelResults comic = null;
+    public MarvelComic getComicByComicId(int id) {
+        MarvelComic comic = null;
         String sql = "SELECT comic_id, title, thumbnail_url FROM comics WHERE comic_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         if (results.next()) {
@@ -38,8 +36,8 @@ public class JdbcComicDao implements ComicDao {
     }
 
     @Override
-    public List<OverallMarvelResults> getComicsByCollectionId(int id) {
-        List<OverallMarvelResults> comics = new ArrayList<>();
+    public List<MarvelComic> getComicsByCollectionId(int id) {
+        List<MarvelComic> comics = new ArrayList<>();
         String sql = "SELECT c.comic_id, c.title, c.thumbnail_url FROM comics_collections AS cc " +
                 "INNER JOIN comics AS c ON c.comic_id = cc.comic_id WHERE cc.collection_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
@@ -59,11 +57,11 @@ public class JdbcComicDao implements ComicDao {
         return "";
     }
 
-    private OverallMarvelResults mapRowToComic(SqlRowSet rowSet) {
-        OverallMarvelResults comic = new OverallMarvelResults();
-        comic.setId(rowSet.getInt("comic_id"));
-        comic.setTitle(rowSet.getString("title"));
-        comic.setThumbnail(new MarvelThumbnail(rowSet.getString("thumbnail_url"), ""));
+    private MarvelComic mapRowToComic(SqlRowSet rowSet) {
+        MarvelComic comic = new MarvelComic();
+        comic.setComicId(rowSet.getInt("comic_id"));
+        comic.setComicTitle(rowSet.getString("title"));
+        comic.setImage(rowSet.getString("thumbnail_url"));
         return comic;
     }
 }

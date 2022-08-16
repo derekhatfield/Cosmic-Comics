@@ -1,4 +1,4 @@
-package com.techelevator.model.MarvelDataModels;
+/*package com.techelevator.model.MarvelDataModels;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,4 +21,4 @@ public class MarvelURLs {
     public void setUrl(String url) {
         this.url = url;
     }
-}
+}*/

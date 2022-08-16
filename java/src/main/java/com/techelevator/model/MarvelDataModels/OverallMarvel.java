@@ -1,4 +1,4 @@
-package com.techelevator.model.MarvelDataModels;
+/*package com.techelevator.model.MarvelDataModels;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -22,4 +22,4 @@ public class OverallMarvel {
         this.data = data;
         return this;
     }
-}
+}*/

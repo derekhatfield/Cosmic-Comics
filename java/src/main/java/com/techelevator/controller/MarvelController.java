@@ -1,4 +1,4 @@
-package com.techelevator.controller;
+/*package com.techelevator.controller;
 
 
 // TODO: THIS NEEDS TO BE DEPRECIATED - NON FUNCTIONAL AT THIS TIME
@@ -27,7 +27,7 @@ public class MarvelController {
     private static final String MARVEL_API_TS = "ts=1";
     private static final String MARVEL_API_HASH = "&hash=c10e02667791a567160a2739bc6849a1";
 
-    /* The pattern for making Marvel API calls is base url + comics/characters/etc + ts + public key + hash */
+    /* The pattern for making Marvel API calls is base url + comics/characters/etc + ts + public key + hash
 
     public static RestTemplate restTemplate = new RestTemplate();
     public static ObjectMapper objectMapper = new ObjectMapper();
@@ -159,4 +159,4 @@ public class MarvelController {
         }
     }
 
-}
+}*/
