@@ -36,14 +36,7 @@ export default {
       this.collections = response.data;
       console.log(this.collections);
     });
-  },
-
-
-/*   axios() {
-    axios.get('https://gateway.marvel.com/v1/public/').then(response => { 
-    this.items = response.items
-})
-  } */
+  }
 };
 </script>
 

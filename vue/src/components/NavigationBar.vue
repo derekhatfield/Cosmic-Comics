@@ -9,7 +9,7 @@
       >
     </div>
     <div class="nav-box">
-      <router-link v-bind:to="{ name: 'CreateACollection' }" tag="p"
+      <router-link v-bind:to="{ name: 'createACollection' }" tag="p"
         >Create A Collection</router-link
       >
 
