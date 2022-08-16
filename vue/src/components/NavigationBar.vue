@@ -32,7 +32,7 @@ export default {
   align-self: center;
   justify-content: center;
   vertical-align: middle;
-  height: auto; /* Change this when we properly have everything fit on the page */
+  height: fit-content; /* Change this when we properly have everything fit on the page */
 }
 
 button {
@@ -48,7 +48,7 @@ button {
   font-weight: bold;
   font-size: 160%;
   border-radius: 10px;
-  padding: 1.5% 1% 1.5% 1%;
+  padding: 1% 1% 1% 1%;
   line-height: 15px;
   width: fit-content;
   block-size: fit-content;
@@ -74,9 +74,10 @@ button {
   font-weight: bold;
   font-size: 160%;
   border-radius: 10px;
-  padding: 1.5% 1% 1.5% 1%;
-  line-height: 15px;
+  padding: 1% 1% 1% 1%;
+  line-height: fit-content;
   width: auto;
+  height: auto;
   block-size: fit-content;
   margin: 0% 1% 0% 1%;
 }
@@ -92,7 +93,7 @@ button {
   font-size: 160%;
   border-radius: 10px;
   width: auto;
-  height: 20px;
+  height: auto;
 }
 
 img {

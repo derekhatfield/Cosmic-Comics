@@ -68,11 +68,12 @@ export default {
 <style scoped>
 h1 /* Title */ {
   padding: 0;
-  margin: 30px;
+ margin-top: 20px;
+  margin-bottom: 100px;
   width: auto;
   height: auto;
   text-align: center;
-  font-size: 100px;
+  font-size: 130px;
   color: #4bd668;
   font-family: "Bangers";
   letter-spacing: 11px;
