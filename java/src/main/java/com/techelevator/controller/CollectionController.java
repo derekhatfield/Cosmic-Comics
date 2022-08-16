@@ -6,8 +6,10 @@ import com.techelevator.model.Collection;
 import com.techelevator.model.MarvelDataModels.OverallMarvel;
 import com.techelevator.model.MarvelDataModels.OverallMarvelData;
 import com.techelevator.model.MarvelDataModels.OverallMarvelResults;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
 import java.util.List;
@@ -62,11 +64,13 @@ public class CollectionController {
         return new OverallMarvel().setData(new OverallMarvelData().setResultsList(collections).setCount(collections.size()).setTotal(collectionDao.getCollections("", Integer.MAX_VALUE, 0).size()));
     }
 
+    @PreAuthorize("permitAll()")
     @RequestMapping(path = "/create", method = RequestMethod.POST)
     public void addCollection(@RequestBody Collection newCollection, Principal principal){
-        collectionDao.addCollection(newCollection.setUserId(userDao.findIdByUsername(principal.getName())));
+            collectionDao.addCollection(newCollection.setUserId(userDao.findIdByUsername(principal.getName())));
     }
 
+    @PreAuthorize("permitAll()")
     @RequestMapping(path = "/delete/{id}", method = RequestMethod.POST)
     public void removeCollection(@PathVariable int id, Principal principal) {
         collectionDao.removeCollection(id);
@@ -78,12 +82,14 @@ public class CollectionController {
         return collectionDao.getThumbnail(id);
     }
 
+    @PreAuthorize("permitAll()")
     @RequestMapping(path = "/{collectionId}/add/{comicId}", method = RequestMethod.POST)
     public void addComic(@PathVariable int collectionId, @PathVariable int comicId, Principal principal) {
         OverallMarvelResults comic = MarvelController.MarvelComic.getComic(comicId).getData().getResults()[0];
         collectionDao.addComic(comic, collectionId);
     }
 
+    @PreAuthorize("permitAll()")
     @RequestMapping(path = "/{collectionId}/remove/{comicId}", method = RequestMethod.POST)
     public void deleteComic(@PathVariable int collectionId, @PathVariable int comicId, Principal principal) {
         collectionDao.deleteComic(collectionId, comicId);

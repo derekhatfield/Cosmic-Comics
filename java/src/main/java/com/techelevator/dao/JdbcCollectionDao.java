@@ -91,9 +91,9 @@ public class JdbcCollectionDao implements CollectionDao {
 
     @Override
     public void addComic(OverallMarvelResults newComic, int collectionId) {
-        String sql = "INSERT INTO comics (comic_id, title, thumbnail_url) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO comics (comic_id, title, thumbnail_url) VALUES (?, ?, ?) ON CONFLICT DO NOTHING;";
         jdbcTemplate.update(sql, newComic.getId(), newComic.getTitle(), newComic.getThumbnail().getPath() + "." + newComic.getThumbnail().getExtension());
-        sql = "INSERT INTO comics_collections (comic_id, collection_id) VALUES (?, ?);";
+        sql = "INSERT INTO comics_collections (comic_id, collection_id) VALUES (?, ?) ON CONFLICT DO NOTHING;";
         jdbcTemplate.update(sql, newComic.getId(), collectionId);
         for (MarvelItemNames creator : newComic.getCreators().getItems()) {
             if (creator.getResourceURI() != null) {
@@ -103,7 +103,7 @@ public class JdbcCollectionDao implements CollectionDao {
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-                sql = "INSERT INTO creators (creator_id, first_name, last_name, thumbnail_url) VALUES (?, ?, ?, ?);";
+                sql = "INSERT INTO creators (creator_id, first_name, last_name, thumbnail_url) VALUES (?, ?, ?, ?) ON CONFLICT DO NOTHING;";
                 String firstName = "";
                 String lastName = "";
                 try {
@@ -116,9 +116,9 @@ public class JdbcCollectionDao implements CollectionDao {
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-                jdbcTemplate.update(sql, id, firstName, lastName, creator.getRole(), "");
+                jdbcTemplate.update(sql, id, firstName, lastName, "");
                 if (!comicDao.hasAuthor(newComic.getId(), id)) {
-                    sql = "INSERT INTO comics_creators (comic_id, creator_id) VALUES (?, ?);";
+                    sql = "INSERT INTO comics_creators (comic_id, creator_id) VALUES (?, ?) ON CONFLICT DO NOTHING;";
                     jdbcTemplate.update(sql, newComic.getId(), id);
                 }
             }
@@ -153,46 +153,6 @@ public class JdbcCollectionDao implements CollectionDao {
     }
 
     @Override
-    public void addComicToCollection(OverallMarvelResults comicToAdd, int collectionId) {
-        String sql = "INSERT INTO comics (comic_id, title, thumbnail_url) VALUES (?, ?, ?);";
-        jdbcTemplate.update(sql, comicToAdd.getId(), comicToAdd.getTitle(), comicToAdd.getThumbnail().getPath() + "." + comicToAdd.getThumbnail().getExtension());
-        sql = "INSERT INTO comics_collections (comic_id, collection_id) VALUES (?, ?);";
-        jdbcTemplate.update(sql, comicToAdd.getId(), collectionId);
-        for (MarvelItemNames creator : comicToAdd.getCreators().getItems()) {
-            if (creator.getResourceURI() != null) {
-                int id = 0;
-                try {
-                    id = Integer.parseInt(creator.getResourceURI().substring(creator.getResourceURI().lastIndexOf('/') + 1));
-                } catch (Exception e) {
-                    System.out.println(creator.getResourceURI().substring(creator.getResourceURI().lastIndexOf('/') + 1));
-                }
-                sql = "INSERT INTO creators (creator_id, first_name, last_name, thumbnail_url) VALUES (?, ?, ?, ?);";
-                String firstName = "";
-                String lastName = "";
-                try {
-                    firstName = creator.getName().substring(0, creator.getName().indexOf(' '));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-                try {
-                    lastName = creator.getName().substring(creator.getName().lastIndexOf(' '));
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-                jdbcTemplate.update(sql, id, firstName, lastName, "");
-                sql = "INSERT INTO comics_creators (comic_id, creator_id) VALUES (?, ?);";
-                jdbcTemplate.update(sql, comicToAdd.getId(), id);
-            }
-        }
-    }
-
-    @Override
-    public void deleteComicFromCollection(int collectionId, int comicId) {
-        String sql = "DELETE FROM comics_collections WHERE comic_id = ? AND collection_id = ?;";
-        jdbcTemplate.update(sql, comicId, collectionId);
-    }
-
-    @Override
     public int getCollectionOwner(int collectionId) {
         String sql = "SELECT user_id FROM collections WHERE collection_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, collectionId);
@@ -204,7 +164,7 @@ public class JdbcCollectionDao implements CollectionDao {
 
     @Override
     public String getThumbnail(int collectionId) {
-        String sql = "SELECT c.thumbnail_url FROM comic AS c INNER JOIN comics_collections AS cc ON c.comic_id = cc.comic_id WHERE collection_id = ?;";
+        String sql = "SELECT c.thumbnail_url FROM comics AS c INNER JOIN comics_collections AS cc ON c.comic_id = cc.comic_id WHERE collection_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, collectionId);
         if (results.next()) {
             return results.getString("thumbnail_url");

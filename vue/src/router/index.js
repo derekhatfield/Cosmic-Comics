@@ -7,7 +7,6 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Collections from '../views/Collections.vue'
 import Comics from '../views/Comics.vue'
-import CreateACollection from '../views/CreateACollection.vue'
 Vue.use(Router)
 
 /**
@@ -57,7 +56,7 @@ const router = new Router({
     },
 
     {
-      path: "/collections",
+      path: "/user/:username/collections",
       name: "collections",
       component: Collections,
       meta: {
@@ -69,15 +68,6 @@ const router = new Router({
       path: "/comics",
       name: "comics",
       component: Comics,
-      meta: {
-        requiresAuth: false
-      }
-    },
-
-    {
-      path: "/collections/create",
-      name: "CreateACollection",
-      component: CreateACollection,
       meta: {
         requiresAuth: false
       }

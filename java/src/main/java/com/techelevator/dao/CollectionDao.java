@@ -31,10 +31,6 @@ public interface CollectionDao {
 
     List<Collection> getCollectionsByUserId(int userId);
 
-    void addComicToCollection(OverallMarvelResults comicToAdd, int collectionId);
-
-    void deleteComicFromCollection(int collectionId, int comicId);
-
     int getCollectionOwner(int collectionId);
 
     String getThumbnail(int collectionId);

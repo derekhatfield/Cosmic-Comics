@@ -1,7 +1,10 @@
 package com.techelevator.model.MarvelDataModels;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class OverallMarvelData {
 
     private int offset;

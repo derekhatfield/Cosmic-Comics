@@ -1,5 +1,8 @@
 package com.techelevator.model.MarvelDataModels;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MarvelItemNames {
 
     private String resourceURI;
