@@ -15,7 +15,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "https://gateway.marvel.com/*")
 @RequestMapping("/collections")
 @PreAuthorize("isAuthenticated()")
 public class CollectionController {

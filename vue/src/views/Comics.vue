@@ -2,12 +2,13 @@
   <div class="Cosmic Comics">
     <h1 class="Comics">Comics</h1>
     <navigation-bar/>
-    <body>      
-        <div v-for="result in [data.data.results[0]]" v-bind:key="result.title">
-          <h2>{{result.title}}</h2>
-          <img :src="`${result.thumbnail.path}.${result.thumbnail.extension}`">
-        </div>      
-    </body>
+    <div id="comicBody"> 
+
+      <div id="comicCover" v-for="comic in apiComics" v-bind:key="comic.marvelId">
+        <img :src="comic.imageURL" alt="">     
+      </div>
+    
+    </div>
   </div>
 </template>
 
@@ -24,27 +25,39 @@ export default {
 
   data(){
     return {
-      data: {
-        data: {
-          results: [          
-          ]
-        }        
-      }
+     
+     apiComic: {
+       "comicId":0,
+       "marvelId":0,
+       "comicTitle":"0",
+       "author":null,
+       "imageURL":"",
+       "releaseDate":null,
+       "creatorId":0,
+       "seriesId":0,
+       "description":"",
+       "extension":"jpg"
+       },
+      
+      apiComics: []
+
     }
   },
 
   created(){
-    /*MarvelService.searchByCharacters("hulk").then((response) => {
-      this.data = response.data;
-    });*/ 
+
     MarvelService.searchByComics("hulk").then((response) => {
-      this.data = response.data;
+      this.apiComics = response.data;
     })
   }
 };
 </script>
 
 <style scoped>
+
+#comicCover {
+  display: inline-block;
+}
 
 h1 /* Title */ {
 font-family: "Raleway";

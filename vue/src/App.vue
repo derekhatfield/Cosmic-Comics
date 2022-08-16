@@ -32,7 +32,11 @@
           >Join Now</router-link
         >
       </div>
+      <!--
+      <span v-if="this.$store.state.user.username"> Welcome, {{ this.$store.state.user.username}} </span>
+      -->
     </div>
+
     <router-view />
 
     <footer>

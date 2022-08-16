@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "https://gateway.marvel.com/*")
 @RequestMapping("/comics")
 @PreAuthorize("isAuthenticated()")
 public class ComicController {
