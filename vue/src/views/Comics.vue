@@ -4,6 +4,7 @@
     <navigation-bar/>
     <body>
       <div>
+        <h1>{{results.name}}</h1>
       </div>
     </body>
   </div>
@@ -12,10 +13,26 @@
 
 <script>
 import NavigationBar from '@/components/NavigationBar';
+import MarvelService from '@/services/MarvelService';
 export default {
   name: "Comics",
   components: {
     NavigationBar
+  },
+  data(){
+    return {
+      results: {
+        data: {
+          results: []
+        }
+      }
+    }
+  },
+
+  created(){
+    MarvelService.searchByCharacters("hulk").then((response) => {
+      this.results = response.data
+    }); 
   }
 };
 </script>
