@@ -11,10 +11,13 @@
 <script>
 import ComicCard from "./ComicCard.vue";
 import CollectionService from "@/services/CollectionService.js";
+/* import axios from 'axios'; */
 
 export default {
   components: {
     ComicCard,
+    /* CollectionService,
+    axios, */
   },
   data() {
     return {
@@ -34,6 +37,13 @@ export default {
       console.log(this.collections);
     });
   },
+
+
+/*   axios() {
+    axios.get('https://gateway.marvel.com/v1/public/').then(response => { 
+    this.items = response.items
+})
+  } */
 };
 </script>
 

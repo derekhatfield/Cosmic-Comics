@@ -3,7 +3,7 @@
     <h1 class="Collections">Cosmic Collections</h1>
     <navigation-bar />
 
-    <div class="filter tool">
+    <div class="dropdown">
       <button onclick="myFunction()" class="dropButton">Filter By</button>
       <div id="filterDropdown" class="dropdown-content">
         <input
@@ -16,8 +16,9 @@
         <a href="#character">Character</a>
         <a href="#collection">Collection</a>
       </div>
-      <collections-list/>
+
     </div>
+          <collections-list/>
   </div>
 </template>
 
@@ -53,7 +54,11 @@ export default {
       );
     },
   },
+
 };
+
+
+
 </script>
 
 
@@ -90,10 +95,11 @@ h1 /* Title */ {
   cursor: pointer;
   background-image: linear-gradient(navy, #0b7285);
   margin-left: auto;
-  margin-right: 25%; /* This can be adjusted once we have comics in the webpage, it'll move the "Filter By" button */
-  margin-top: 10%;
+  margin-right: 10%; /* This can be adjusted once we have comics in the webpage, it'll move the "Filter By" button */
+  margin-top: 2%;
   display: block;
 }
+
 
 .dropButton:hover,
 .dropButton:focus {
@@ -109,6 +115,8 @@ h1 /* Title */ {
   background-image: linear-gradient(#d890ff, #0b7285);
   font-family: "Contrail One";
   color: white;
+/*   -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out; */
 }
 
 ::placeholder {
@@ -126,8 +134,11 @@ h1 /* Title */ {
 .dropdown {
   /* The container <div> - needed to position the dropdown content */
   position: relative;
-  display: inline-block;
+  margin-left: auto;
+  display: block;
 }
+
+
 
 .dropdown-content {
   /* Dropdown Content (Hidden by Default) */
@@ -144,6 +155,7 @@ h1 /* Title */ {
   background-image: linear-gradient(#0b7285, #2adda7);
 }
 
+
 .dropdown-content a {
   /* Links inside the dropdown */
   color: white;
@@ -151,6 +163,10 @@ h1 /* Title */ {
   text-decoration: none;
   display: block;
   font-size: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 /* Change color of dropdown links on hover */

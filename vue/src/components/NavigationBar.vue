@@ -1,9 +1,7 @@
 <template>
   <div class="navigation-container">
     <div class="nav-box">
-      <router-link v-bind:to="{ name: 'comics' }" tag="p"
-        >Comics</router-link
-      >
+      <router-link v-bind:to="{ name: 'comics' }" tag="p">Comics</router-link>
     </div>
     <div class="nav-box">
       <router-link v-bind:to="{ name: 'collections' }" tag="p"
@@ -11,11 +9,17 @@
       >
     </div>
     <div class="nav-box">
-      <router-link v-bind:to="{ name: 'CreateACollection' }" tag="p">Create A Collection</router-link>
+      <router-link v-bind:to="{ name: 'CreateACollection' }" tag="p"
+        >Create A Collection</router-link
+      >
 
-
-
-
+      <input
+      class="search-bar-tool"
+        type="text"
+        name="search"
+        placeholder=""
+        src="@/assets/Search Tool.png"
+      />
     </div>
     <div class="nav-box">
       <button type="button">
@@ -40,6 +44,49 @@ export default {
 </script>
 
 <style>
+/* Search Bar */
+.search-bar-tool[type="text"] {
+  width: 65px;
+  height: 65px;
+  font-family: "Contrail One";
+  text-align: center;
+  background-color: transparent;
+  color: white;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  padding: 1% 6%;
+  margin: 1% 1%;
+/*   background-image: url("/assets/Search Tool.png"); */
+    background-image: url(https://i.postimg.cc/Z5X14FjF/untitled-design-Transparent.png);
+  background-size: contain ;
+  background-repeat: no-repeat;
+  outline: 0;
+  background-size: 50px;
+  background-position: 12px;
+  border: none;
+}
+
+/* Search Bar */
+/* When the input field gets focus, change its width to 100% */
+.search-bar-tool[type="text"]:focus {
+  width: 100%;
+  font-family: "Contrail One", "Franklin Gothic Medium Extended", "sans-serif";
+  text-align: center;
+  border: 5px solid #5ecade;
+  border-style: inset;
+  border-radius: 16px;
+  background-color: navy;
+  color: white;
+}
+
+::placeholder {
+  /* "Search Cosmic Comics"*/
+  color: white;
+  font-family: "Bangers";
+  letter-spacing: 2px;
+}
+
+
 .navigation-container {
   background-image: none;
   background-color: transparent;
@@ -70,13 +117,11 @@ button {
   block-size: fit-content;
 }
 
-
 button {
   background-image: none;
   background-color: transparent;
   border: transparent;
   width: fit-content;
-  
 }
 
 .nav-box {
@@ -128,6 +173,4 @@ img {
   width: 50px;
   height: 50px;
 }
-
-
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div class="card">
+      <div class="button">
+          <button class="add-a-comic">Add A comic</button>
+      </div>
       <h2 class="title">Title</h2>
       <img class="thumbnail_url" src="" alt="">
-      <div class="button">
-          <button class="add-a-comic">Add a comic</button>
-      </div>
   </div>
 </template>
 
@@ -21,8 +21,7 @@ export default {
 <style scoped>
 .card {
     background-color: white;
-    border: green;
-    border-style: solid white;
+    border-style: solid rgb(111, 218, 111);
     width: 200px;
     height: 200px;
 }
