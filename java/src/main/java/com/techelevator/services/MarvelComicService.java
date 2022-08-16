@@ -6,14 +6,12 @@ package com.techelevator.services;
 //       FROM PHL[6] TEAM[1]
 // ********************************************************************************
 
-import com.sun.jdi.IntegerValue;
 import com.techelevator.model.MarvelModel.MarvelComic;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.ResourceAccessException;
@@ -38,8 +36,7 @@ public class MarvelComicService {
     String privateKey = "6a0961a46925e2b1524460f0e74c8a24add73d67";
     String publicKey = "248644f449ac62c68a60d0ecd4fa7dba";
 
-    public MarvelComicService() {
-    }
+    public MarvelComicService() {}
 
     public MarvelComicService(String Api_Base_URL, String timestamp, String privateKey, String publicKey) {
         this.Api_Base_URL = Api_Base_URL;

@@ -20,7 +20,8 @@ public class MarvelComic {
     private int seriesId;
     private String description;
     private String extension;
-    public MarvelComic (){}
+
+    public MarvelComic() {}
 
     public MarvelComic(int comicId, String comicTitle, String author, String imageURL, Date releaseDate, int creatorId, int seriesId, String description, String extension) {
         this.comicId = comicId;
@@ -34,9 +35,6 @@ public class MarvelComic {
         this.description = description;
         this.extension = extension;
     }
-
-    //getters
-
 
     public int getComicId() {
         return comicId;
@@ -76,12 +74,13 @@ public class MarvelComic {
         return extension;
     }
 
-    //setters
     public void setComicId(int comicId) {
         this.comicId = comicId;
     }
 
-    public void setMarvelId(int marvelId) {this.marvelId = marvelId;}
+    public void setMarvelId(int marvelId) {
+        this.marvelId = marvelId;
+    }
 
     public void setComicTitle(String comicTitle) {
         this.comicTitle = comicTitle;
@@ -107,9 +106,13 @@ public class MarvelComic {
         this.seriesId = seriesId;
     }
 
-    public void setDescription(String description) {this.description = description;}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public void setExtension(String extension) {this.extension = extension;}
+    public void setExtension(String extension) {
+        this.extension = extension;
+    }
 
     public String toString() {
         return "Comic{" + comicId +

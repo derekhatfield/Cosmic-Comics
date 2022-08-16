@@ -12,8 +12,7 @@ public class MarvelCharacter {
     private String thumbnail;
     private String description;
 
-    public MarvelCharacter() {
-    }
+    public MarvelCharacter() {}
 
     public MarvelCharacter(int characterId, String characterName, String thumbnail, String description) {
         this.characterId = characterId;
@@ -21,7 +20,6 @@ public class MarvelCharacter {
         this.thumbnail = thumbnail;
         this.description = description;
     }
-    //getters
 
     public String getDescription() {
         return description;
@@ -38,9 +36,6 @@ public class MarvelCharacter {
     public String getCharacterName() {
         return characterName;
     }
-
-    //setters
-
 
     public void setDescription(String description) {
         this.description = description;
