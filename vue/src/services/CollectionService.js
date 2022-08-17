@@ -30,8 +30,8 @@ export default {
         return http.get(`/collections/thumbnail/${id}`);
     },
 
-    addComicToCollection(collectionId, comicId) {
-        return http.post(`/collections/${collectionId}/add/${comicId}`);
+    addComicToCollection(apiComic, collectionId, comicId) {
+        return http.post(`/collections/${collectionId}/add/${comicId}`, apiComic);
     },
 
     removeComicFromCollection(collectionId, comicId) {

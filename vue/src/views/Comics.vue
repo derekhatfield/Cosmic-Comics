@@ -20,12 +20,14 @@
         v-for="comic in sortComicsByUserInput"
         v-bind:key="comic.marvelId"
       >
-        <button class="UserCollection, popup" v-on:click="myFunction(comic.marvelId); getComicIdToAdd(comic.marvelId)" >
+        <button class="UserCollection, popup" v-on:click="myFunction(comic.marvelId); getComicIdToAdd(comic.marvelId)">
           <div>
-            Add Comic
-            <button class="popuptext" :id="`myPopup${comic.marvelId}`" v-for="collection in userCollections" v-bind:key="collection.id" v-on:click.prevent="addComicToCollection(collectionId)">{{collection.name}}</button>
+            Add Comic to a Collection
+            <button class="popuptext" :id="`myPopup${comic.marvelId}`" v-for="collection in userCollections" v-bind:key="collection.collectionId" 
+            v-on:click="addComicToCollection(comic, collection.collectionId)">{{collection.name}}</button>
           </div>
         </button>
+        
         <img :src="comic.imageURL" alt="" class="comic-img" />
         <h2>{{ comic.comicTitle }}</h2>
       </div>
@@ -82,10 +84,15 @@ export default {
         this.apiComics = response.data;
       });
     },
-    addComicToCollection(collectionId) {
-      CollectionService.addComicToCollection(collectionId, this.comicIdToAdd).then((response) => {
+    addComicToCollection(comic, collectionId) {
+      CollectionService.addComicToCollection(comic, collectionId, this.comicIdToAdd).then((response) => {
         if (response.status === 200) {
-          this.$router.push({name: "comics"})
+          this.comic = {
+            marvelId: this.comicIdToAdd.comicId,
+            comicTitle: this.api,
+            imageURL: this.imageUrl
+          }
+          this.$router.push({name: "collections"})
         }
       });
     },
@@ -237,15 +244,15 @@ height: 178.125px;
   letter-spacing: 2px;
 }
 
-button {
+/*button {
   text-justify: center;
   color: pink;
   border: white;
   border-style: solid;
   border-radius: 0px;
   /* position: relative;
-  z-index: 4; */
-}
+  z-index: 4; 
+}*/
 
 .popup {
   position: relative;
@@ -256,6 +263,7 @@ button {
   -ms-user-select: none;
   user-select: none;
   z-index: 4;
+  
 }
 
 .popup .popuptext {
@@ -274,7 +282,6 @@ button {
 }
 
 .popup .popuptext::after {
-  content: "";
   top: 100%;
   left: 50%;
   margin-left: -5px;

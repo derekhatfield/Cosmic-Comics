@@ -21,7 +21,7 @@ public interface CollectionDao {
 
     void removeCollection(int collectionId);
 
-    void addComic(int collectionId, int comicId, String comicTitle, String comicURL);
+    void addComic(int comicId, int collectionId, String comicTitle, String comicURL);
 
     void deleteComic(int collectionId, int comicId);
 

@@ -8,6 +8,7 @@ import com.techelevator.services.MarvelComicService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -68,9 +69,9 @@ public class CollectionController {
 
     @PreAuthorize("permitAll()")
     @RequestMapping(path = "/{collectionId}/add/{comicId}", method = RequestMethod.POST)
-    public void addComic(@RequestBody MarvelComic comic, @PathVariable int collectionId, @PathVariable int comicId, Principal principal) {
+    public void addComic(@Valid @RequestBody MarvelComic comic, @PathVariable int collectionId, @PathVariable int comicId) {
 
-        collectionDao.addComic(collectionId, comicId, comic.getComicTitle(), comic.getImageURL());
+        collectionDao.addComic(comicId, collectionId, comic.getComicTitle(), comic.getImageURL());
     }
 
     @PreAuthorize("permitAll()")

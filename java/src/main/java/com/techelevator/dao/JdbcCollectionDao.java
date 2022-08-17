@@ -84,7 +84,7 @@ public class JdbcCollectionDao implements CollectionDao {
     }
 
     @Override
-    public void addComic(int collectionId, int comicId, String comicTitle, String comicURL) {
+    public void addComic(int comicId, int collectionId, String comicTitle, String comicURL) {
         String sql = "INSERT INTO comics (comic_id, title, thumbnail_url) VALUES (?, ?, ?) ON CONFLICT DO NOTHING;";
         jdbcTemplate.update(sql, comicId, comicTitle, comicURL);
         sql = "INSERT INTO comics_collections (comic_id, collection_id) VALUES (?, ?) ON CONFLICT DO NOTHING;";
