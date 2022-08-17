@@ -2,7 +2,6 @@
   <div class="CosmicCollections">
     <h1 class="Collections">Cosmic Collections</h1>
     <navigation-bar />
-
     <div class="dropdown">
       <button onclick="myFunction()" class="dropButton">Filter By</button>
       <div id="filterDropdown" class="dropdown-content">
@@ -16,16 +15,15 @@
         <a href="#character">Character</a>
         <a href="#collection">Collection</a>
       </div>
-
     </div>
-          <collections-list/>
+    <collections-list/>
   </div>
 </template>
 
 <script>
 import CollectionsList from "@/components/CollectionsList";
 import NavigationBar from "@/components/NavigationBar";
-import CollectionService from "@/services/CollectionService.js";
+
 export default {
   name: "Collections",
   components: {
@@ -35,35 +33,19 @@ export default {
 
   data() {
     return {
-      collection: {
-        id: "",
-      },
-    };
+    }
   },
 
   methods: {
     myFunction() {
       document.getElementById("filterDropdown").classList.toggle("show");
-    },
-
-    created() {
-      CollectionService.getCollectionById(this.$route.params.id).then(
-        (response) => {
-          this.collection = response.data;
-        }
-      );
-    },
+    }
   },
 
-};
-
-
-
+  created() {
+  }
+}
 </script>
-
-
-
-
 
 <style scoped>
 h1 /* Title */ {
@@ -102,8 +84,7 @@ h1 /* Title */ {
 }
 
 
-.dropButton:hover,
-.dropButton:focus {
+.dropButton:hover, .dropButton:focus {
   /* Changes color of "Filter By" button when you hover */
   background-color: #c863ff;
 }
@@ -138,8 +119,6 @@ h1 /* Title */ {
   margin-left: auto;
   display: block;
 }
-
-
 
 .dropdown-content {
   /* Dropdown Content (Hidden by Default) */

@@ -12,7 +12,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "https://gateway.marvel.com/*")
+@CrossOrigin
 @RequestMapping("/collections")
 @PreAuthorize("isAuthenticated()")
 public class CollectionController {
@@ -34,11 +34,18 @@ public class CollectionController {
         return collections;
     }
 
-    @PreAuthorize("permitAll()")
+    /*@PreAuthorize("permitAll()")
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public Collection getCollectionByCollectionId(@PathVariable int id) {
         Collection collection = collectionDao.getCollectionById(id);
         return collection;
+    }*/
+
+    @PreAuthorize("permitAll()")
+    @RequestMapping(path = "/{username}", method = RequestMethod.GET)
+    public List<Collection> getMyCollections(@PathVariable String username) {
+        List<Collection> collections = collectionDao.getCollectionsByUserId(userDao.findIdByUsername(username));
+        return collections;
     }
 
     @PreAuthorize("permitAll()")

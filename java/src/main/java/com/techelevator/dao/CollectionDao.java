@@ -17,8 +17,6 @@ public interface CollectionDao {
 
     List<Collection> getCollections(String name, int limit, int page);
 
-    List<Collection> getCollectionsByUser(int userId);
-
     void addCollection(Collection collectionToCreate);
 
     void removeCollection(int collectionId);

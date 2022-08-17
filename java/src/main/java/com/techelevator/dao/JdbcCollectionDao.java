@@ -72,11 +72,6 @@ public class JdbcCollectionDao implements CollectionDao {
     }
 
     @Override
-    public List<Collection> getCollectionsByUser(int userId) {
-        return getCollections("SELECT * FROM collections;", new Object[] {userId}, new int[] {java.sql.Types.INTEGER});
-    }
-
-    @Override
     public void addCollection(Collection newCollection) {
         String sql = "INSERT INTO collections (user_id, collection_name) VALUES (?, ?);";
         jdbcTemplate.update(sql, newCollection.getUserId(), newCollection.getName());

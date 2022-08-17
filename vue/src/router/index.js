@@ -61,7 +61,7 @@ const router = new Router({
       name: "collections",
       component: Collections,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
 
