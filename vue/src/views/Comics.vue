@@ -20,7 +20,7 @@
         v-for="comic in sortComicsByUserInput"
         v-bind:key="comic.marvelId"
       >
-        <button class="UserCollection, popup" v-on:click="myFunction(comic.marvelId); getComicIdToAdd(comic.marvelId)">
+        <button class="popup" v-on:click="myFunction(comic.marvelId); getComicIdToAdd(comic.marvelId)">
           <div>
             Add Comic to a Collection
             <button class="popuptext" :id="`myPopup${comic.marvelId}`" v-for="collection in userCollections" v-bind:key="collection.collectionId" 
