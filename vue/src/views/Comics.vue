@@ -20,7 +20,12 @@
         v-for="comic in sortComicsByUserInput"
         v-bind:key="comic.marvelId"
       >
-      <button class="UserCollection">Add to Collection</button>
+        <button class="UserCollection" onclick="myFunction()">
+          <div class="popup" onclick="myFunction()">
+            Click me to toggle the popup!
+            <span class="popuptext" id="myPopup">A Simple Popup!</span>
+          </div>
+        </button>
         <img :src="comic.imageURL" alt="" />
         <h2>{{ comic.comicTitle }}</h2>
       </div>
@@ -67,12 +72,19 @@ export default {
     },
   },
 
+  function: {
+    myFunction() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+  },
+
   methods: {
     searchComics() {
       MarvelService.searchByComics(this.userInput).then((response) => {
         this.apiComics = response.data;
       });
-    },
+    }
   },
 
   created() {
@@ -90,7 +102,6 @@ export default {
   font-family: "Contrail One", "Franklin Gothic Medium Extended", "sans-serif";
   letter-spacing: 1px;
   word-spacing: 2px;
-  
 }
 
 .grid-container {
@@ -134,7 +145,7 @@ img {
   height: 356.25px;
   width: 255.796872px;
   margin: 20px;
-  border:2px solid white;
+  border: 2px solid white;
 }
 
 /* 
@@ -214,5 +225,73 @@ button {
   border: white;
   border-style: solid;
   border-radius: 0px;
+  /* position: relative;
+  z-index: 4; */
 }
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 4;
+}
+
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* .grid-item {
+  position: relative;
+  z-index: -1;
+} */
 </style>
