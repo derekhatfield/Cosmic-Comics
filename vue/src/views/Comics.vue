@@ -20,16 +20,17 @@
         v-for="comic in sortComicsByUserInput"
         v-bind:key="comic.marvelId"
       >
-        <button class="UserCollection, popup" v-on:click="myFunction()">
-          <div >
+        <button class="UserCollection, popup" v-on:click="myFunction(comic.marvelId)" v-on:submit.prevent="addComicToCollection">
+          <div>
             Add Comic
-            <span class="popuptext" id="myPopup">Added!</span>
+            <span class="popuptext" :id="`myPopup${comic.marvelId}`">Added!</span>
           </div>
         </button>
-        <img :src="comic.imageURL" alt="" />
+        <img :src="comic.imageURL" alt="" class="comic-img" />
         <h2>{{ comic.comicTitle }}</h2>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -37,13 +38,14 @@
 <script>
 import NavigationBar from "@/components/NavigationBar";
 import MarvelService from "@/services/MarvelService";
+import CollectionService from "@/services/CollectionService"
 
 export default {
   name: "Comics",
   components: {
     NavigationBar,
   },
-
+  props: ["collectionId"],
   data() {
     return {
       userInput: "",
@@ -78,8 +80,15 @@ export default {
         this.apiComics = response.data;
       });
     },
-    myFunction() {
-      var popup = document.getElementById("myPopup");
+    addComicToCollection() {
+      CollectionService.addComicToCollection(this.collectionId, this.comicId).then((response) => {
+        if (response.status === 200) {
+          this.$router.push({name: "comics"})
+        }
+      });
+    },
+    myFunction(marvelId) {
+      var popup = document.getElementById("myPopup" + marvelId);
       popup.classList.toggle("show");
     }
   },
@@ -139,7 +148,7 @@ h2 {
 }
 
 /* This is the comic cover images */
-img {
+.comic-img {
   height: 356.25px;
   width: 255.796872px;
   margin: 20px;

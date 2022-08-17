@@ -1,63 +1,75 @@
 <template>
   <div id="app">
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Bangers"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Contrail One"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Raleway"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bangers"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Contrail One"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
+
     <div id="nav">
-        <router-link v-bind:to="{ name: 'home' }"
-          ><img class="logo" src="@/assets/Cosmic Comics.png"
-        /></router-link>
+        <router-link v-bind:to="{ name: 'home' }">
+          <img class="logo" src="@/assets/Cosmic Comics.png"/>
+        </router-link>
       <div class="header-box">
         <router-link v-bind:to="{ name: 'home' }" tag="p">Home</router-link>
       </div>
-      <router-link
-        v-bind:to="{ name: 'logout' }"
-        v-if="$store.state.token != ''"
-        >Logout</router-link
-      >
-      <div class="header-box">
-        <router-link v-bind:to="{ name: 'login' }" tag="p">Login</router-link>
+      <div class="header-box" v-if="this.$store.state.token != ''">
+        <router-link v-bind:to="{ name: 'logout' }"  v-on:click="setViewStatusLoggedIn()"  tag="p">Logout</router-link>
+      </div>      
+      <div class="header-box" v-if="this.$store.state.token == ''">
+        <router-link v-bind:to="{ name: 'login' }"  v-on:click="setViewStatusLoggedOut()" tag="p">Login</router-link>
       </div>
-      <div class="header-box">
-        <router-link v-bind:to="{ name: 'register' }" tag="p"
-          >Join Now</router-link
-        >
+      <div class="header-box" v-if="this.$store.state.token == ''">
+        <router-link v-bind:to="{ name: 'register' }"  v-on:click="setViewStatusLoggedOut()" tag="p">Join Now</router-link>
       </div>
-      <!--
+      
       <span v-if="this.$store.state.user.username"> Welcome, {{ this.$store.state.user.username}} </span>
-      -->
+      
     </div>
 
     <router-view />
 
     <footer>
-      <p>Data provided by Marvel. ⓒ 2014 Marvel</p>
+      <p>Data provided by Marvel. ⓒ 2022 Marvel</p>
     </footer>
   </div>
 </template>
 
+<script>
+
+export default {
+  name: "app",
+  data() {
+    return {
+      isLoggedIn: false,
+      isLoggedOut: true
+    }
+  },
+  methods: {
+    setViewStatusLoggedIn() {
+      this.isLoggedIn = true;
+      this.isLoggedOut = false;
+    },
+    setViewStatusLoggedOut() {
+      this.isLoggedIn = false;
+      this.isLoggedOut = true;
+    }
+  }
+}
+
+</script>
+
+
 
 <style>
 
-
-
-body{ /* Thor Cursor */
-cursor: url(https://64.media.tumblr.com/9c3614e3a555d94e0547732afc46b5e6/a02dfc418c2b33f7-65/s100x200/77b98e48aff7c67333405a4e3dcbda2743446b12.png), auto
+body { /* Thor Cursor */
+  cursor: url(https://64.media.tumblr.com/9c3614e3a555d94e0547732afc46b5e6/a02dfc418c2b33f7-65/s100x200/77b98e48aff7c67333405a4e3dcbda2743446b12.png), auto
 };
 
 /* The WHITE BORDER IS BACKKKK but this thing below originally fixed it */
 * {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 p {
@@ -70,7 +82,8 @@ p {
 #app {
   background-image: url("assets/CC Wallpaper.png");
   background-attachment: scroll;
-  background-size: cover;
+  background-size: 100%;
+  min-height: 100vh;
 }
 
 #nav {
@@ -114,11 +127,12 @@ footer {
   text-align: center;
   bottom: 0;
   margin: 0;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin-top: 30vmin;
+  /*margin-bottom: auto;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: auto;*/
   background-image: none;
+  position: relative;
 }
 
 .logo {

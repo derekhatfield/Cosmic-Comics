@@ -9,13 +9,15 @@
     </div>
     <div class="comicContainer">
       <!--<comic-card />-->
-    </div>        
+    </div>
+       
   </div>
 </template>
 
 <script>
 //import ComicCard from "./ComicCard.vue";
 import CollectionService from "@/services/CollectionService.js";
+//import Comics from "@/views/Comics.vue";
 
 export default {
   components: {

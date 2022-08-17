@@ -46,7 +46,7 @@ export default {
             userId: this.$store.state.user.id
           }
           
-        }   
+        } 
         this.$router.push({name: "collections"});     
       });
     }    
