@@ -20,14 +20,11 @@
         v-for="comic in sortComicsByUserInput"
         v-bind:key="comic.marvelId"
       >
-        <button class="popup" v-on:click="myFunction(comic.marvelId); getComicIdToAdd(comic.marvelId)">
-          <div>
-            Add Comic to a Collection
-            <button class="popuptext" :id="`myPopup${comic.marvelId}`" v-for="collection in userCollections" v-bind:key="collection.collectionId" 
-            v-on:click="addComicToCollection(comic, collection.collectionId)">{{collection.name}}</button>
-          </div>
-        </button>
-        
+        <span v-on:click="myFunction(comic.marvelId); getComicIdToAdd(comic.marvelId)">
+          Add Comic to a Collection            
+            <button v-show="getComicIdToAdd !== 0" :id="`myPopup${comic.marvelId}`" v-for="collection in userCollections" v-bind:key="collection.collectionId" 
+            v-on:click="getComicIdToAdd(comic.marvelId); addComicToCollection(comic, collection.collectionId)">{{collection.name}}</button>          
+        </span>        
         <img :src="comic.imageURL" alt="" class="comic-img" />
         <h2>{{ comic.comicTitle }}</h2>
       </div>
@@ -63,7 +60,6 @@ export default {
         description: "",
         extension: "jpg",
       },
-
       apiComics: [],
       userCollections: [],
       comicIdToAdd: 0
@@ -170,7 +166,7 @@ h2 {
 .comic-img {
   height: 356.25px;
   width: 255.796872px;
-  margin: 20px;
+  margin: 10px 20px 20px 20px;
   border: 2px solid white;
 }
 
@@ -229,6 +225,8 @@ height: 178.125px;
 .search-bar-tool[type="text"]:focus {
   width: 50%;
   font-family: "Contrail One", "Franklin Gothic Medium Extended", "sans-serif";
+  font-size: 40px;
+  color: orange;
   text-align: center;
   border: 5px solid #5ecade;
   border-style: inset;
@@ -245,17 +243,25 @@ height: 178.125px;
   letter-spacing: 2px;
 }
 
-/*button {
-  text-justify: center;
-  color: pink;
-  border: white;
-  border-style: solid;
-  border-radius: 0px;
-  /* position: relative;
-  z-index: 4; 
-}*/
+span {
+  color: orange;
+  width: 260px;
+}
 
-.popup {
+button {
+  text-justify: center;
+  color: #d890ff;
+  font-family: "Bangers";
+  font-size: 20px;
+  border: #5ecade;
+  background-color: navy;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin: 5px;
+}
+
+/*.popup {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -267,7 +273,7 @@ height: 178.125px;
   
 }
 
-.popup .popuptext {
+.popuptext {
   visibility: hidden;
   width: 160px;
   background-color: #555;
@@ -282,7 +288,7 @@ height: 178.125px;
   margin-left: -80px;
 }
 
-.popup .popuptext::after {
+.popuptext::after {
   top: 100%;
   left: 50%;
   margin-left: -5px;
@@ -295,7 +301,7 @@ height: 178.125px;
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
-}
+}*/
 
 @-webkit-keyframes fadeIn {
   from {
