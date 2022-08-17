@@ -160,9 +160,10 @@ h2 {
   margin-right: 22px;
   margin-left: 22px;
   margin-bottom: 50px;
+  margin-top: 0px;
   padding-bottom: 40px;
   padding-top: 0;
-  margin-top: 0px;
+  
 }
 
 /* This is the comic cover images */
