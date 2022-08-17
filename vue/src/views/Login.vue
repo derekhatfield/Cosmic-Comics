@@ -17,18 +17,28 @@
 
         <section>
           <div class="login-section">
-
-            
             <form action="/action_page.php">
-
               <label for="username" class="username-tag">Username</label>
-              <input type="username" id="Username" class="username-form-control" placeholder="Username" v-model="user.username" required autofocus/>
-              
+              <input
+                type="username"
+                id="Username"
+                class="username-form-control"
+                placeholder="Username"
+                v-model="user.username"
+                required
+                autofocus
+              />
+
               <label for="password" class="password-tag">Password</label>
-              <input type="password" id="password" class="password-form-control" placeholder="Password" v-model="user.password" required/>
-
+              <input
+                type="password"
+                id="password"
+                class="password-form-control"
+                placeholder="Password"
+                v-model="user.password"
+                required
+              />
             </form>
-
           </div>
 
           <div class="need-account-clickable">
@@ -172,24 +182,6 @@ button.submit {
   block-size: fit-content;
 }
 
-a {
-  /* "Need an Account?" Button */
-  color: #3db656;
-  display: inline-block;
-  background-color: transparent;
-  background-image: none;
-  font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
-  font-size: 15px;
-  margin: auto;
-  padding: 0;
-  text-align: center;
-  letter-spacing: 0.5px;
-  word-spacing: 1px;
-  width: fit-content;
-  block-size: fit-content;
-  text-decoration: none;
-}
-
 .login-section {
   margin: auto;
   width: fit-content;
@@ -208,7 +200,7 @@ a {
 }
 
 button.register {
-  display: flex;
+  /* "Need an Account?" Button */
   margin: 10px;
   width: fit-content;
   flex-direction: row;
@@ -217,13 +209,24 @@ button.register {
   padding-top: 4.5%;
   padding-bottom: 4.5%;
   letter-spacing: 1px;
-  word-spacing: 0;
   font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
-  
+  color: #3db656;
+  background-color: transparent;
+  border: none;
+  background-image: none;
+  padding: 0;
+  text-align: center;
+  word-spacing: 1px;
+  block-size: fit-content;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 /* Style inputs */
-  input[type=text], select {
+input[type="text"],
+select {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -235,11 +238,10 @@ button.register {
   font-size: 25px;
 }
 
-
 /* Style the submit button */
-input[type=submit] {
+input[type="submit"] {
   width: 100%;
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -248,48 +250,5 @@ input[type=submit] {
   cursor: pointer;
 }
 
-
-
-
-
-
-
-
-
-/*  
-.form-control {
-  /* Controls the boxes for Username & Password 
-  background-color: #98f5d9;
-  border: transparent;
-  font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
-  font-size: 25px;
-  margin-right: 5px;
-}
-
-.username-form-control {
-  /* Controls the boxes for Username & Password 
-  background-color: #98f5d9;
-  border: transparent;
-  font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
-  font-size: 25px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-right: 50%;
-  margin-left: 50%;
-}
-
-.password-form-control {
-  /* Controls the boxes for Username & Password 
-  background-color: #98f5d9;
-  border: transparent;
-  font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
-  font-size: 25px;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  margin-right: 50%;
-  margin-left: 50%;
-}
-
-*/
 
 </style>

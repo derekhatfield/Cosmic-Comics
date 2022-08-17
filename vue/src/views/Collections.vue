@@ -2,9 +2,9 @@
   <div class="CosmicCollections">
     <h1 class="Collections">Cosmic Collections</h1>
     <navigation-bar />
+    <div class="grid-container"></div>
 
-
-<!--
+    <!--
     This is for the filter by button that doesn't work but looks really good!
 
 
@@ -24,8 +24,7 @@
     </div>
   -->
 
-
-    <collections-list/>
+    <collections-list />
   </div>
 </template>
 
@@ -37,29 +36,27 @@ export default {
   name: "Collections",
   components: {
     NavigationBar,
-    CollectionsList
+    CollectionsList,
   },
 
   data() {
-    return {
-    }
+    return {};
   },
 
   methods: {
     myFunction() {
       document.getElementById("filterDropdown").classList.toggle("show");
-    }
+    },
   },
 
-  created() {
-  }
-}
+  created() {},
+};
 </script>
 
 <style scoped>
 h1 /* Title */ {
   padding: 0;
- margin-top: 20px;
+  margin-top: 20px;
   margin-bottom: 100px;
   width: auto;
   height: auto;
@@ -76,8 +73,8 @@ h1 /* Title */ {
 .dropButton {
   /* Filter By Dropdown Button */
   background-color: navy;
-  border: 4px  solid #4bd668;
-  border-style:double;
+  border: 4px solid #4bd668;
+  border-style: double;
   border-radius: 10px;
   font-family: "Contrail One";
   letter-spacing: 3px;
@@ -92,8 +89,8 @@ h1 /* Title */ {
   display: flex;
 }
 
-
-.dropButton:hover, .dropButton:focus {
+.dropButton:hover,
+.dropButton:focus {
   /* Changes color of "Filter By" button when you hover */
   background-color: #c863ff;
 }
@@ -106,7 +103,7 @@ h1 /* Title */ {
   background-image: linear-gradient(#d890ff, #0b7285);
   font-family: "Contrail One";
   color: white;
-/*   -webkit-transition: width 0.4s ease-in-out;
+  /*   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out; */
 }
 
@@ -145,9 +142,7 @@ h1 /* Title */ {
   margin-left: 80%;
   margin-right: auto; /* This can be adjusted once we have comics in the webpage, it'll move the "Filter By" button */
   margin-top: 0;
-
 }
-
 
 .dropdown-content a {
   /* Links inside the dropdown */
@@ -170,5 +165,11 @@ h1 /* Title */ {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {
   display: block;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 300px 300px 300px 300px 300px;
+  justify-content: center;
 }
 </style>

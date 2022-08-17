@@ -35,7 +35,7 @@ export default {
   height: fit-content; /* Change this when we properly have everything fit on the page */
 }
 
-button {
+/* button {
   border: 5px solid #5ecade;
   border-style: inset;
   background-image: none;
@@ -60,7 +60,7 @@ button {
   border: transparent;
   width: fit-content;
 }
-
+ */
 .nav-box {
   border: 5px solid #5ecade;
   border-style: inset;

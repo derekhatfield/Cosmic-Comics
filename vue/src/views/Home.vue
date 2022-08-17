@@ -282,6 +282,7 @@ body {
 .flip-card-front-4,
 .flip-card-front-5 {
   position: absolute;
+  
 }
 
 /* Style the back side */
