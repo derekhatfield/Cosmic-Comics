@@ -79,7 +79,7 @@ const router = new Router({
       name: "createACollection",
       component: CreateACollection,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     }
   ]
