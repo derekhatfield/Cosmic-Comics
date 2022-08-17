@@ -2,6 +2,12 @@
   <div class="CosmicCollections">
     <h1 class="Collections">Cosmic Collections</h1>
     <navigation-bar />
+
+
+<!--
+    This is for the filter by button that doesn't work but looks really good!
+
+
     <div class="dropdown">
       <button onclick="myFunction()" class="dropButton">Filter By</button>
       <div id="filterDropdown" class="dropdown-content">
@@ -16,6 +22,9 @@
         <a href="#collection">Collection</a>
       </div>
     </div>
+  -->
+
+
     <collections-list/>
   </div>
 </template>

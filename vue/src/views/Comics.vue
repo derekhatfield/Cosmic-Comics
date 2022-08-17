@@ -20,10 +20,10 @@
         v-for="comic in sortComicsByUserInput"
         v-bind:key="comic.marvelId"
       >
-        <button class="UserCollection" onclick="myFunction()">
-          <div class="popup" onclick="myFunction()">
-            Click me to toggle the popup!
-            <span class="popuptext" id="myPopup">A Simple Popup!</span>
+        <button class="UserCollection, popup" v-on:click="myFunction()">
+          <div >
+            Add Comic
+            <span class="popuptext" id="myPopup">Added!</span>
           </div>
         </button>
         <img :src="comic.imageURL" alt="" />
@@ -61,7 +61,7 @@ export default {
       },
 
       apiComics: [],
-    };
+    }
   },
 
   computed: {
@@ -69,13 +69,6 @@ export default {
       return this.apiComics.filter((comic) =>
         comic.comicTitle.toLowerCase().includes(this.userInput.toLowerCase())
       );
-    },
-  },
-
-  function: {
-    myFunction() {
-      var popup = document.getElementById("myPopup");
-      popup.classList.toggle("show");
     }
   },
 
@@ -84,6 +77,10 @@ export default {
       MarvelService.searchByComics(this.userInput).then((response) => {
         this.apiComics = response.data;
       });
+    },
+    myFunction() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
     }
   },
 
@@ -91,8 +88,9 @@ export default {
     MarvelService.searchByComics("A").then((response) => {
       this.apiComics = response.data;
     });
-  },
-};
+  }
+}
+
 </script>
 
 <style scoped>
@@ -248,7 +246,7 @@ button {
   text-align: center;
   border-radius: 6px;
   padding: 8px 0;
-  position: absolute;
+  position: sticky;
   z-index: 1;
   bottom: 125%;
   left: 50%;
@@ -257,7 +255,6 @@ button {
 
 .popup .popuptext::after {
   content: "";
-  position: absolute;
   top: 100%;
   left: 50%;
   margin-left: -5px;
