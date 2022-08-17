@@ -19,8 +19,9 @@
             />
           </div>
           <div class="flip-card-back-1" v-if="isShownOne">
-            <h1>The Immortal Hulk</h1>
+            <h3>The Immortal Hulk</h3>
             <p>Vol. 4 (Hardcover)</p>
+            <br>
             <p>Published: November 17, 2021</p>
           </div>
 
@@ -33,8 +34,9 @@
             />
           </div>
           <div class="flip-card-back-2" v-if="isShownTwo">
-            <h1>The Amazing Spider-Man</h1>
+            <h3>The Amazing Spider-Man</h3>
             <p>(2018) #70</p>
+            <br>
             <p>Published: July 07, 2021</p>
           </div>
 
@@ -42,13 +44,14 @@
             <img
               class="image3"
               src="@/assets/Thor Home.jpeg"
-              alt="THOR: LIGHTNING AND LAMENT"
+              alt="Thor: Lightning and Lament"
               style="width: 511.9375px; height: 712.5px"
             />
           </div>
           <div class="flip-card-back-3" v-if="isShownThree">
-            <h1>THOR: LIGHTNING AND LAMENT</h1>
+            <h3>Thor: Lightning and Lament</h3>
             <p>(2022) #1</p>
+            <br>
             <p>Published: June 29, 2022</p>
           </div>
 
@@ -61,8 +64,9 @@
             />
           </div>
           <div class="flip-card-back-4" v-if="isShownFour">
-            <h1>Thanos: Zero Sanctuary</h1>
+            <h3>Thanos: Zero Sanctuary</h3>
             <p>(Trade Paperback)</p>
+            <br>
             <p>Published: November 27, 2019</p>
           </div>
 
@@ -75,19 +79,20 @@
             />
           </div>
           <div class="flip-card-back-5" v-if="isShownFive">
-            <h1>Avengers</h1>
+            <h3>Avengers</h3>
             <p>(2018) #57</p>
+            <br>
             <p>Published: July 13, 2022</p>
           </div>
         </div>
       </div>
 
       <div class="promo-display">
-        <button class="promo-box" v-on:click="setViewStatusOne(true)">promo 1</button>
-        <button class="promo-box" v-on:click="setViewStatusTwo(true)">promo 2</button>
-        <button class="promo-box" v-on:click="setViewStatusThree(true)">promo 3</button>
-        <button class="promo-box" v-on:click="setViewStatusFour(true)">promo 4</button>
-        <button class="promo-box" v-on:click="setViewStatusFive(true)">promo 5</button>
+        <button class="promo-box" v-on:click="setViewStatusOne(true)">Hulk</button>
+        <button class="promo-box" v-on:click="setViewStatusTwo(true)">Spider-Man</button>
+        <button class="promo-box" v-on:click="setViewStatusThree(true)">Thor</button>
+        <button class="promo-box" v-on:click="setViewStatusFour(true)">Thanos</button>
+        <button class="promo-box" v-on:click="setViewStatusFive(true)">The Avengers</button>
       </div>
     </body>
   </div>
@@ -177,6 +182,30 @@ h2 {
   text-align: center;
 }
 
+h3 { /* This is adjusting the text on flip-card-back */
+  color: #e671da;
+  font-family: "Bangers";
+  letter-spacing: 11px;
+  line-height: 150%;
+  word-spacing: 30px;
+  text-shadow: 2px 2px 0 black, 2px -2px 0 black, -2px 2px 0 black,
+    -2px -2px 0 black, 7px 7px 0 black, 9px 9px 0 #2adda7;
+  text-align: center;
+  text-decoration-color: solid black;
+  font-size: 70px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+p {
+  color: white;
+  font-family: "trade gothic";
+  text-align: center;
+  font-size: 30px;
+}
+
 body {
   background-image: none;
   background-color: transparent;
@@ -253,8 +282,6 @@ body {
 .flip-card-front-4,
 .flip-card-front-5 {
   position: absolute;
-  background-color: #bbb;
-  color: black;
 }
 
 /* Style the back side */
@@ -265,66 +292,50 @@ body {
 .flip-card-back-5 {
   position: absolute;
   background-color: transparent;
-  color: white;
   transform: rotateY(180deg);
+  margin-top: 25%;
+  margin-bottom: 25%;
+  
 }
 
-/* .flip-card {
-  width: 255.796875px;
-  height: 356.25px;
-  border: 7px solid #5ecade;
-  border-style: inset;
-  background-image: none;
-
-  text-align: center;
-
-  font-family: "Contrail One", "Raleway", "Franklin Gothic Medium Extended";
-  font-weight: bold;
-  font-size: 175%;
-  border-radius: 10px;
-  margin-top: 0px;
-  margin-bottom: 10px;
-  margin-right: auto;
-  margin-left: auto;
-
-  padding: 2% 2% 2% 2%;
+.alt {
+  font-family: "Contrail One"
 }
-.flip-card-inner {
-  color: #3db656;
-  display: flex;
-  align-self: center;
-  justify-content: space-around;
-  background-color: transparent;
-  background-image: none;
-} */
+
 .promo-display {
   background-color: transparent;
   flex-direction: row;
   display: flex;
   align-self: center;
-  justify-content: space-around;
   background-image: none;
   width: auto;
-  height: auto;
   font-family: "Raleway", "Contrail One", "Franklin Gothic Medium Extended";
+  justify-content: center;
+  vertical-align: middle;
+  height: fit-content; /* Change this when we properly have everything fit on the page */
+  margin-bottom: 100px;
+
 }
+
 .promo-box {
-  color: #5ecade;
   text-align: center;
-  font-size: 175%;
-  border: 2px solid black;
+  font-size: 200%;
   border-radius: 10px;
-  padding: 1% 2% 1% 2%;
-  width: 12%;
-  border: 3px solid #d890ff;
+  padding: 12px;
+  width: fit-content;
+  border: 3px solid #2adda7;
   border-style: inset;
   background-image: none;
-  background-color: #3db656;
+  background-color: #f9722b;
   color: white;
-
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+	-webkit-text-stroke-width: 0.2px;
+    -webkit-text-stroke-color: black;
+    font-family: "Bangers", "Contrail One", "Franklin Gothic Medium Extended";
+
 }
 
 .promo-box span {
@@ -351,5 +362,6 @@ body {
 
 img {
   margin: 0px;
+  border: transparent;
 }
 </style>
