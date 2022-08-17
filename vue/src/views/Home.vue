@@ -9,7 +9,8 @@
 
       <div class="flip-card">
         <div class="flip-card-inner">
-          <div class="flip-card-front">
+
+          <div class="flip-card-front-1" v-if="isShownOne">
             <img
               class="image1"
               src="@/assets/Hulk Home.jpeg"
@@ -17,13 +18,13 @@
               style="width: 511.9375px; height: 712.5px"
             />
           </div>
-          <div class="flip-card-back">
+          <div class="flip-card-back-1" v-if="isShownOne">
             <h1>The Immortal Hulk</h1>
             <p>Vol. 4 (Hardcover)</p>
             <p>Published: November 17, 2021</p>
           </div>
 
-          <div class="flip-card-front">
+          <div class="flip-card-front-2" v-if="isShownTwo">
             <img
               class="image2"
               src="@/assets/Spiderman Home.jpeg"
@@ -31,13 +32,13 @@
               style="width: 511.9375px; height: 712.5px"
             />
           </div>
-          <div class="flip-card-back">
+          <div class="flip-card-back-2" v-if="isShownTwo">
             <h1>The Amazing Spider-Man</h1>
             <p>(2018) #70</p>
             <p>Published: July 07, 2021</p>
           </div>
 
-          <div class="flip-card-front">
+          <div class="flip-card-front-3" v-if="isShownThree">
             <img
               class="image3"
               src="@/assets/Thor Home.jpeg"
@@ -45,13 +46,13 @@
               style="width: 511.9375px; height: 712.5px"
             />
           </div>
-          <div class="flip-card-back">
+          <div class="flip-card-back-3" v-if="isShownThree">
             <h1>THOR: LIGHTNING AND LAMENT</h1>
             <p>(2022) #1</p>
             <p>Published: June 29, 2022</p>
           </div>
 
-          <div class="flip-card-front">
+          <div class="flip-card-front-4" v-if="isShownFour">
             <img
               class="image4"
               src="@/assets/Thanos Home.jpeg"
@@ -59,13 +60,13 @@
               style="width: 511.9375px; height: 712.5px"
             />
           </div>
-          <div class="flip-card-back">
+          <div class="flip-card-back-4" v-if="isShownFour">
             <h1>Thanos: Zero Sanctuary</h1>
             <p>(Trade Paperback)</p>
             <p>Published: November 27, 2019</p>
           </div>
 
-          <div class="flip-card-front">
+          <div class="flip-card-front-5" v-if="isShownFive">
             <img
               class="image5"
               src="@/assets/Avengers Home.jpeg"
@@ -73,7 +74,7 @@
               style="width: 511.9375px; height: 712.5px"
             />
           </div>
-          <div class="flip-card-back">
+          <div class="flip-card-back-5" v-if="isShownFive">
             <h1>Avengers</h1>
             <p>(2018) #57</p>
             <p>Published: July 13, 2022</p>
@@ -82,11 +83,11 @@
       </div>
 
       <div class="promo-display">
-        <button class="promo-box">promo 1</button>
-        <button class="promo-box">promo 2</button>
-        <button class="promo-box">promo 3</button>
-        <button class="promo-box">promo 4</button>
-        <button class="promo-box">promo 5</button>
+        <button class="promo-box" v-on:click="setViewStatusOne(true)">promo 1</button>
+        <button class="promo-box" v-on:click="setViewStatusTwo(true)">promo 2</button>
+        <button class="promo-box" v-on:click="setViewStatusThree(true)">promo 3</button>
+        <button class="promo-box" v-on:click="setViewStatusFour(true)">promo 4</button>
+        <button class="promo-box" v-on:click="setViewStatusFive(true)">promo 5</button>
       </div>
     </body>
   </div>
@@ -99,6 +100,52 @@ export default {
   components: {
     NavigationBar,
   },
+  data() {
+    return {
+      isShownOne: true,
+      isShownTwo: false,
+      isShownThree: false,
+      isShownFour: false,
+      isShownFive: false
+    }
+  },
+  methods: {
+    setViewStatusOne(value) {
+      this.isShownOne = value;
+      this.isShownTwo = false;
+      this.isShownThree = false;
+      this.isShownFour = false;
+      this.isShownFive = false;
+    },
+    setViewStatusTwo(value) {
+      this.isShownOne = false;
+      this.isShownTwo = value;
+      this.isShownThree = false;
+      this.isShownFour = false;
+      this.isShownFive = false;
+    },
+    setViewStatusThree(value) {
+      this.isShownOne = false;
+      this.isShownTwo = false;
+      this.isShownThree = value;
+      this.isShownFour = false;
+      this.isShownFive = false;
+    },
+    setViewStatusFour(value) {
+      this.isShownOne = false;
+      this.isShownTwo = false;
+      this.isShownThree = false;
+      this.isShownFour = value;
+      this.isShownFive = false;
+    },
+    setViewStatusFive(value) {
+      this.isShownOne = false;
+      this.isShownTwo = false;
+      this.isShownThree = false;
+      this.isShownFour = false;
+      this.isShownFive = value;
+    }
+  }
 };
 </script>
 
@@ -143,8 +190,7 @@ body {
   width: 511.9375px;
   height: 712.5px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  /* justify-content: center;
- */
+  
   border: 7px solid white;
   background-image: none;
 
@@ -178,23 +224,46 @@ body {
 }
 
 /* Position the front and back side */
-.flip-card-front,
-.flip-card-back {
+.flip-card-front-1,
+.flip-card-back-1,
+.flip-card-front-2,
+.flip-card-back-2,
+.flip-card-front-3,
+.flip-card-back-3,
+.flip-card-front-4,
+.flip-card-back-4,
+.flip-card-front-5,
+.flip-card-back-5 {
   position: absolute;
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+
+  /* margin-top: 0px;
+  margin-bottom: 50px;
+  margin-right: auto;
+  margin-left: auto; */
 }
 
 /* Style the front side (fallback if image is missing) */
-.flip-card-front {
+.flip-card-front-1,
+.flip-card-front-2,
+.flip-card-front-3,
+.flip-card-front-4,
+.flip-card-front-5 {
+  position: absolute;
   background-color: #bbb;
   color: black;
 }
 
 /* Style the back side */
-.flip-card-back {
+.flip-card-back-1,
+.flip-card-back-2,
+.flip-card-back-3,
+.flip-card-back-4,
+.flip-card-back-5 {
+  position: absolute;
   background-color: transparent;
   color: white;
   transform: rotateY(180deg);
@@ -280,23 +349,7 @@ body {
   right: 0;
 }
 
-.image1 {
-  display: none;
-}
-
-.image2 {
-  display: none;
-}
-
-.image3 {
-  display: none;
-}
-
-.image4 {
-  display: none;
-}
-
-.image5 {
-  display: none;
+img {
+  margin: 0px;
 }
 </style>
