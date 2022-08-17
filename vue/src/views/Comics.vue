@@ -20,10 +20,10 @@
         v-for="comic in sortComicsByUserInput"
         v-bind:key="comic.marvelId"
       >
-        <button class="UserCollection, popup" v-on:click="myFunction(comic.marvelId)" v-on:submit.prevent="addComicToCollection">
+        <button class="UserCollection, popup" v-on:click="myFunction(comic.marvelId); getComicIdToAdd(comic.marvelId)" >
           <div>
             Add Comic
-            <span class="popuptext" :id="`myPopup${comic.marvelId}`">Added!</span>
+            <button class="popuptext" :id="`myPopup${comic.marvelId}`" v-for="collection in userCollections" v-bind:key="collection.id" v-on:click.prevent="addComicToCollection(collectionId)">{{collection.name}}</button>
           </div>
         </button>
         <img :src="comic.imageURL" alt="" class="comic-img" />
@@ -63,6 +63,8 @@ export default {
       },
 
       apiComics: [],
+      userCollections: [],
+      comicIdToAdd: 0
     }
   },
 
@@ -80,8 +82,8 @@ export default {
         this.apiComics = response.data;
       });
     },
-    addComicToCollection() {
-      CollectionService.addComicToCollection(this.collectionId, this.comicId).then((response) => {
+    addComicToCollection(collectionId) {
+      CollectionService.addComicToCollection(collectionId, this.comicIdToAdd).then((response) => {
         if (response.status === 200) {
           this.$router.push({name: "comics"})
         }
@@ -90,13 +92,22 @@ export default {
     myFunction(marvelId) {
       var popup = document.getElementById("myPopup" + marvelId);
       popup.classList.toggle("show");
+    },
+
+    getComicIdToAdd(comicId) {
+      this.comicIdToAdd = comicId;
     }
+
   },
 
   created() {
     MarvelService.searchByComics("A").then((response) => {
       this.apiComics = response.data;
-    });
+    }),
+
+    CollectionService.getMyCollections(this.$store.state.user.username).then((response) =>{
+      this.userCollections = response.data;
+    })
   }
 }
 
