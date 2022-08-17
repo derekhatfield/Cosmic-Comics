@@ -21,7 +21,7 @@
         <router-link v-bind:to="{ name: 'register' }"  v-on:click="setViewStatusLoggedOut()" tag="p">Join Now</router-link>
       </div>
       
-      <span v-if="this.$store.state.user.username"> Welcome, {{ this.$store.state.user.username}} </span>
+      <span v-if="this.$store.state.user.username"> Welcome,<br> {{ this.$store.state.user.username}} </span>
       
     </div>
 
@@ -140,5 +140,28 @@ footer {
   height: 100%;
   margin: 7px;
   border: transparent;
+}
+
+span {
+  margin: 10px 20px 10px 10px;
+  line-height: 20px;
+  text-align: center;
+
+  border: 3px solid #4bd668;
+  border-style: inset;
+  background-image: linear-gradient(navy, rgb(65, 65, 184), navy);
+  background-color: navy;
+  border-radius: 10px;
+  padding: 8px 3px 8px 3px;
+  color: #5ecade;
+  font-family: "Contrail One", "Raleway", "Franklin Gothic Medium Extended";
+  letter-spacing: 0.5px;
+  word-spacing: 1px;
+
+  font-size: auto;
+  justify-content: right;
+  width: auto;
+  block-size: fit-content;
+  display: inline-block;
 }
 </style>
