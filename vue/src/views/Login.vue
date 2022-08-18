@@ -5,14 +5,12 @@
       <body>
         <h1 class="login-in">Please Login</h1>
         <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
-          Invalid username and password!
         </div>
         <div
           class="alert alert-success"
           role="alert"
           v-if="this.$route.query.registration"
         >
-          Thank you for registering, please login.
         </div>
 
         <section>
